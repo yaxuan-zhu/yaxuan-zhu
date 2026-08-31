@@ -1,0 +1,103 @@
+/* ============================================================
+   Amy Zhu — portfolio site
+   Base layer is carried over verbatim from the Claude Design
+   prototype (Amy Zhu Site.dc.html); everything below the
+   "PRODUCTION LAYER" rule is added for the deployed build.
+   ============================================================ */
+
+html, body { margin: 0; background: #0A0A0A; overscroll-behavior: none; }
+body {
+  color: #F2F1EE;
+  font-family: 'Archivo', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: #F2F1EE; }
+a:hover { color: #ED6A2F; }
+button {
+  font: inherit; color: inherit; background: none; border: none;
+  padding: 0; cursor: pointer; text-align: left;
+}
+::selection { background: #ED6A2F; color: #0A0A0A; }
+[data-scroll] { scrollbar-width: none; }
+[data-scroll]::-webkit-scrollbar { display: none; }
+
+@keyframes sndshift { from { background-position: 0 0 } to { background-position: 26px 0 } }
+@keyframes strip    { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+
+/* ===================== PRODUCTION LAYER ===================== */
+
+/* Photography dropped into the prototype's striped media slots. The slots are
+   inline-styled flex boxes, so the image has to claim the box on its own. */
+.slot-img {
+  display: block;
+  flex: 1 1 auto;
+  align-self: stretch;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  object-fit: cover;
+  object-position: center 38%;   /* faces sit high in most of these frames */
+  background: #0F0F0F;
+}
+
+/* Keyboard users get the same affordance the cursor pill gives mouse users. */
+:focus-visible { outline: 2px solid #ED6A2F; outline-offset: 3px; }
+
+/* The filmstrip pauses on hover so a photo can actually be looked at (spec M8). */
+[data-strip]:hover { animation-play-state: paused; }
+
+/* --- Tablet ------------------------------------------------- */
+@media (max-width: 1100px) {
+  :root { --hdrwide: none; }          /* drop the standfirst + dual clocks */
+  .case-top  { grid-template-columns: 1fr !important; }
+  .about-body { padding: 0 24px !important; }
+}
+
+/* --- Phone -------------------------------------------------- */
+@media (max-width: 760px) {
+  [data-header] { padding: 14px 16px 24px !important; gap: 12px !important; }
+  [data-header] [data-nav-btn="contact"] { padding: 11px 18px !important; font-size: 14px !important; }
+  [data-sound] { display: none !important; }
+
+  .list-row  { grid-template-columns: 1fr !important; gap: 10px !important; align-items: start !important; }
+  .list-row  > span:last-child { text-align: left !important; }
+  .list-year { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .case-body { padding: 60px 6vw 40px !important; }
+
+  /* clear the Profile / Approach switch, and stack the mono label above the H1 */
+  .about-body { top: 172px !important; }
+  [data-abpane] { flex-direction: column !important; gap: 6px !important; }
+  [data-abpane] > span { padding-top: 0 !important; }
+
+  [data-viewtoggle] { left: 12px !important; bottom: 14px !important; }
+  [data-navbar]     { bottom: 14px !important; font-size: 14px !important; }
+  [data-navbar] [data-nav-btn] { padding: 10px 16px !important; }
+  [data-filter]     { right: 12px !important; bottom: 14px !important; padding: 12px 18px !important; font-size: 14px !important; }
+
+  [data-scroll] { padding-left: 16px !important; padding-right: 16px !important; }
+}
+
+/* Touch devices never get the custom cursor pill. */
+@media (hover: none) {
+  [data-cursor] { display: none !important; }
+}
+
+/* Honour the OS setting: no wall parallax, no colour wipes, no marquee. */
+@media (prefers-reduced-motion: reduce) {
+  [data-strip] { animation: none !important; }
+  * { scroll-behavior: auto !important; }
+}
+
+/* --- Small phone: the three bottom pills have to share ~375px --- */
+@media (max-width: 520px) {
+  [data-viewtoggle] { left: 10px !important; bottom: 12px !important; padding: 4px !important; gap: 2px !important; }
+  [data-viewtoggle] [data-mode-btn] { width: 30px !important; height: 30px !important; }
+
+  [data-navbar] { bottom: 12px !important; font-size: 13px !important; padding: 4px !important; }
+  [data-navbar] [data-nav-btn] { padding: 8px 12px !important; }
+
+  [data-filter] { right: 10px !important; bottom: 12px !important; padding: 10px 14px !important; font-size: 13px !important; }
+
+  [data-header] { padding: 12px 12px 20px !important; }
+  [data-header] [data-nav-btn="contact"] { padding: 10px 16px !important; }
+}

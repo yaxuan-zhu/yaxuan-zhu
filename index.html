@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<!-- Amy Zhu — portfolio. Built from the Claude Design prototype
+     "Amy Zhu Site.dc.html"; this file is now the source of truth. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Amy Zhu — I build, I explore, I act.</title>
+<meta name="description" content="Amy Zhu is a Beijing-based student builder crafting robotics, research and social impact — the ball collection robot, a campus fire safety patrol bot, Altay watershed field research and eight years of community work.">
+<meta name="author" content="Amy Zhu">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="canonical" href="https://yaxuan-zhu.github.io/yaxuan-zhu/">
+<meta property="og:url" content="https://yaxuan-zhu.github.io/yaxuan-zhu/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Amy Zhu — I build, I explore, I act.">
+<meta property="og:description" content="Student builder working across cognitive science, robotics and social impact.">
+<meta property="og:image" content="https://yaxuan-zhu.github.io/yaxuan-zhu/assets/img/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 32 32&#39;%3E%3Crect width=&#39;32&#39; height=&#39;32&#39; rx=&#39;7&#39; fill=&#39;%230A0A0A&#39;/%3E%3Ctext x=&#39;16&#39; y=&#39;23&#39; font-size=&#39;20&#39; font-family=&#39;serif&#39; font-weight=&#39;700&#39; fill=&#39;%23fff&#39; text-anchor=&#39;middle&#39;%3E&#x6731;%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Geist+Mono:wght@400..600&amp;family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Serif+SC:wght@600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Geist+Mono:wght@400..600&amp;family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Serif+SC:wght@600;700&amp;display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#0A0A0A;overscroll-behavior:none}
+body{color:#F2F1EE;font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#F2F1EE}a:hover{color:#ED6A2F}
+button{font:inherit;color:inherit;background:none;border:none;padding:0;cursor:pointer;text-align:left}
+::selection{background:#ED6A2F;color:#0A0A0A}
+[data-scroll]{scrollbar-width:none}[data-scroll]::-webkit-scrollbar{display:none}
+@keyframes sndshift{from{background-position:0 0}to{background-position:26px 0}}
+@keyframes strip{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+</helmet>
+
+<!-- ================= HEADER ================= -->
+<div data-header="1" style="position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 28px 40px;display:flex;align-items:flex-start;gap:32px;pointer-events:none;transition:filter 0.4s">
+  <button type="button" data-nav-btn="work" style="pointer-events:auto;width:46px;height:46px;border-radius:50%;border:2.5px solid #FFF;display:flex;align-items:center;justify-content:center;flex:none;background:rgba(10,10,10,0.2);backdrop-filter:blur(6px)"><span style="font-family:'Noto Serif SC',serif;font-weight:700;font-size:22px;color:#FFF">朱</span></button>
+  <div style="flex:1"></div>
+  <button type="button" data-sound="1" style="pointer-events:auto;display:flex;align-items:center;gap:10px;padding-top:8px">
+    <span data-sound-meter="1" style="width:26px;height:11px;background-image:radial-gradient(#8B8B8B 0.8px,transparent 0.9px);background-size:5px 5.5px"></span>
+    <span data-sound-label="1" style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#D9D9D9">SOUND [OFF]</span>
+  </button>
+  <div style="flex:1"></div>
+  <div style="max-width:250px;padding-top:6px;font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;line-height:1.55;color:#E4E4E4;display:var(--hdrwide,block)">AMY ZHU IS A BEIJING-BASED STUDENT BUILDER CRAFTING ROBOTICS, RESEARCH &amp; SOCIAL IMPACT.</div>
+  <div style="display:var(--hdrwide,flex);flex-direction:column;gap:4px;padding-top:6px;font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.06em;color:#9C9C9C">
+    <div style="display:flex;gap:12px"><span>○ BEIJING, CN</span><span style="color:#ECECEC"><span data-clock="bj">--:--</span> GMT+8</span></div>
+    <div style="display:flex;gap:12px"><span>● BOSTON, US</span><span style="color:#ECECEC"><span data-clock="bos">--:--</span> GMT-4</span></div>
+  </div>
+  <div style="flex:1"></div>
+  <button type="button" data-nav-btn="contact" style="pointer-events:auto;background:#FFF;color:#0A0A0A;border-radius:999px;padding:15px 28px;font-family:'Archivo',sans-serif;font-weight:500;font-size:15px;flex:none;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1)" style-hover="transform:scale(1.05)">Let's Talk</button>
+</div>
+
+<!-- ================= VIEW: WORK GRID ================= -->
+<section data-view="grid" data-screen-label="Work — Grid" style="position:fixed;inset:0;overflow:hidden;background:#050505">
+  <div data-wallscale="1" style="position:absolute;inset:0;transform:scale(var(--wall-scale,1));transform-origin:50% 34%">
+  <div data-wall="1" style="position:absolute;left:50%;top:-150px;margin-left:-1032px;display:flex;perspective:2200px;perspective-origin:50% 42%;will-change:transform">
+    <div data-wallcol="-2.5" style="flex:none;width:344px;background:#0C0C0C;border-right:1px solid #1F1F1F;transform:rotateY(22.5deg) translateY(-59px) translateZ(45px)">
+      <div style="height:292px;box-sizing:border-box;border-bottom:1px solid #1F1F1F;padding:12px 16px;display:flex"><div style="flex:1;background:#0F0F0F;overflow:hidden"><img class="slot-img" src="assets/img/stage-solo-recital-640.jpg" alt="Amy performing a solo scene on stage" loading="lazy" decoding="async"></div></div>
+      <div style="height:292px;box-sizing:border-box;border-bottom:1px solid #1F1F1F;padding:12px 16px;display:flex;flex-direction:column;gap:10px"><div style="flex:1;background:#0F0F0F;overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/lab-microscope-640.jpg" alt="Amy as a young child at a microscope in a laboratory" loading="lazy" decoding="async"></div><div style="display:flex;justify-content:flex-end"><span style="font-family:'Geist Mono',monospace;font-size:9px;color:#7A7A7A">2022</span></div></div>
+      <div style="height:292px;box-sizing:border-box;border-bottom:1px solid #1F1F1F;padding:12px 16px;display:flex;flex-direction:column;gap:10px"><div style="flex:1;background:#0F0F0F;overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/kitchen-cooking-640.jpg" alt="Amy cooking at home in an apron" loading="lazy" decoding="async"></div><div style="display:flex;justify-content:flex-end"><span style="font-family:'Geist Mono',monospace;font-size:9px;color:#7A7A7A">2021</span></div></div>
+      <div style="height:292px;box-sizing:border-box;padding:12px 16px;display:flex"><div style="flex:1;background:#0F0F0F;overflow:hidden"><img class="slot-img" src="assets/img/stage-qing-throne-b-640.jpg" alt="Amy in period costume during a school production" loading="lazy" decoding="async"></div></div>
+    </div>
+    <div data-wallcol="-1.5" style="flex:none;width:344px;background:#0C0C0C;border-right:1px solid #1F1F1F;transform:rotateY(13.5deg) translateY(-21px) translateZ(27px)">
+      <div data-cat="CREATIVE" style="height:292px;box-sizing:border-box;border-bottom:1px solid #1F1F1F;padding:12px 16px;display:flex;flex-direction:column;gap:10px;transition:opacity 0.4s">
+        <div style="display:flex;justify-content:space-between;gap:8px;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.08em;color:#7A7A7A"><span>THEATRE</span><span style="color:#9A9A9A">STAGE — PETER PAN</span></div>
+        <div style="flex:1;background:#0F0F0F;overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/stage-ensemble-standing-640.jpg" alt="Amy on stage in a school theatre production" decoding="async"></div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="display:flex;gap:5px"><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#C4C4C4;background:#191919;border:1px solid #2E2E2E;border-radius:3px;padding:2px 7px">CREATIVE</span><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#C4C4C4;background:#191919;border:1px solid #2E2E2E;border-radius:3px;padding:2px 7px">STAGE</span></span><span style="font-family:'Geist Mono',monospace;font-size:9px;color:#7A7A7A">2022</span></div>
+      </div>
+      <button type="button" data-open="ball" data-cat="ENGINEERING" style="display:flex;width:100%;height:292px;box-sizing:border-box;border-bottom:1px solid #1F1F1F;padding:12px 16px;flex-direction:column;gap:10px;transition:opacity 0.4s,transform 0.35s cubic-bezier(0.16,1,0.3,1)" style-hover="transform:scale(1.03)">
+        <div style="display:flex;justify-content:space-between;gap:8px;width:100%;box-sizing:border-box;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.08em;color:#7A7A7A"><span>AMY ZHU LAB</span><span style="color:#9A9A9A">BALL COLLECTION SYSTEM</span></div>
+        <div style="flex:1;width:100%;box-sizing:border-box;background:#ED6A2F;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px"><span style="font-family:'Noto Sans SC',sans-serif;font-weight:700;font-size:54px;color:#FFF;line-height:1">捡球</span><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.3em;color:rgba(255,255,255,0.9)">BALL BOT</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;width:100%;box-sizing:border-box"><span style="display:flex;gap:5px"><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#EDEDED;border:1px solid #4A4A4A;border-radius:3px;padding:2px 7px">ENGINEERING</span><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#C4C4C4;background:#191919;border:1px solid #2E2E2E;border-radius:3px;padding:2px 7px">VISION</span></span><span style="font-family:'Geist Mono',monospace;font-size:9px;color:#7A7A7A">2025</span></div>
+      </button>
+      <div data-cat="IMPACT" style="height:292px;box-sizing:border-box;border-bottom:1px solid #1F1F1F;padding:12px 16px;display:flex;flex-direction:column;gap:10px;transition:opacity 0.4s">
+        <div style="display:flex;justify-content:space-between;gap:8px;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.08em;color:#7A7A7A"><span>REHAB CENTER</span><span style="color:#9A9A9A">CHARITY GALA ¥150K</span></div>
+        <div style="flex:1;background:#0F0F0F;overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/charity-gala-award-640.jpg" alt="Amy interviewing a guest at a charity foundation event" decoding="async"></div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="display:flex;gap:5px"><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#EDEDED;border:1px solid #4A4A4A;border-radius:3px;padding:2px 7px">IMPACT</span><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#C4C4C4;background:#191919;border:1px solid #2E2E2E;border-radius:3px;padding:2px 7px">EVENT</span></span><span style="font-family:'Geist Mono',monospace;font-size:9px;color:#7A7A7A">2023</span></div>
+      </div>
+      <div data-cat="CREATIVE" style="height:292px;box-sizing:border-box;padding:12px 16px;display:flex;flex-direction:column;gap:10px;transition:opacity 0.4s">
+        <div style="display:flex;justify-content:space-between;gap:8px;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.08em;color:#7A7A7A"><span>CREW</span><span style="color:#9A9A9A">ROWING — DAWN SESSIONS</span></div>
+        <div style="flex:1;background:#131313;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.05) 0 1px,transparent 1px 9px);display:flex;align-items:center;justify-content:center"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#6E6E6E">CREW VIDEO — 视频</span></div>
+      </div>
+    </div>
+    <div data-wallcol="-0.5" style="flex:none;width:344px;background:#0C0C0C;border-right:1px solid #1F1F1F;transform:rotateY(4.5deg) translateY(-2px) translateZ(9px)">
+      <div data-cat="CREATIVE" style="height:292px;box-sizing:border-box;border-bottom:1px solid #1F1F1F;padding:12px 16px;display:flex;flex-direction:column;gap:10px;transition:opacity 0.4s">
+        <div style="display:flex;justify-content:space-between;gap:8px;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.08em;color:#7A7A7A"><span>BEIJING RANK #6</span><span style="color:#9A9A9A">RHYTHMIC GYMNASTICS</span></div>
+        <div style="flex:1;background:#131313;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.05) 0 1px,transparent 1px 9px);display:flex;align-items:center;justify-content:center"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#6E6E6E;text-align:center;line-height:1.7">FLOOR ROUTINE — VIDEO 视频</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="display:flex;gap:5px"><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#C4C4C4;background:#191919;border:1px solid #2E2E2E;border-radius:3px;padding:2px 7px">SPORT</span></span><span style="font-family:'Geist Mono',monospace;font-size:9px;color:#7A7A7A">2021</span></div>
+      </div>
+      <button type="button" data-open="fire" data-cat="ENGINEERING" style="display:flex;width:100%;height:292px;box-sizing:border-box;border-bottom:1px solid #1F1F1F;padding:12px 16px;flex-direction:column;gap:10px;transition:opacity 0.4s,transform 0.35s cubic-bezier(0.16,1,0.3,1)" style-hover="transform:scale(1.03)">
+        <div style="display:flex;justify-content:space-between;gap:8px;width:100%;box-sizing:border-box;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.08em;color:#7A7A7A"><span>CAMPUS</span><span style="color:#9A9A9A">FIRE SAFETY PATROL BOT</span></div>
+        <div style="flex:1;width:100%;box-sizing:border-box;background:#131313;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.05) 0 1px,transparent 1px 9px);display:flex;align-items:center;justify-content:center"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#6E6E6E;text-align:center;line-height:1.7">PATROL RUN — VIDEO 视频</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;width:100%;box-sizing:border-box"><span style="display:flex;gap:5px"><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#EDEDED;border:1px solid #4A4A4A;border-radius:3px;padding:2px 7px">ENGINEERING</span><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#C4C4C4;background:#191919;border:1px solid #2E2E2E;border-radius:3px;padding:2px 7px">SYSTEMS</span></span><span style="font-family:'Geist Mono',monospace;font-size:9px;color:#7A7A7A">2023–24</span></div>
+      </button>
+      <div data-cat="IMPACT" style="height:292px;box-sizing:border-box;border-bottom:1px solid #1F1F1F;padding:12px 16px;display:flex;flex-direction:column;gap:10px;transition:opacity 0.4s">
+        <div style="display:flex;justify-content:space-between;gap:8px;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.08em;color:#7A7A7A"><span>HERITAGE</span><span style="color:#9A9A9A">ARTEMISIA CRAFT SALES</span></div>
+        <div style="flex:1;background:#A85FB8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px"><span style="font-family:'Noto Sans SC',sans-serif;font-weight:700;font-size:44px;color:#FFF;line-height:1">艾草锤</span><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.3em;color:rgba(255,255,255,0.9)">CRAFT ¥15K</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="display:flex;gap:5px"><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#EDEDED;border:1px solid #4A4A4A;border-radius:3px;padding:2px 7px">IMPACT</span><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#C4C4C4;background:#191919;border:1px solid #2E2E2E;border-radius:3px;padding:2px 7px">CRAFT</span></span><span style="font-family:'Geist Mono',monospace;font-size:9px;color:#7A7A7A">2024</span></div>
+      </div>
+      <div data-cat="CREATIVE" style="height:292px;box-sizing:border-box;padding:12px 16px;display:flex;flex-direction:column;gap:10px;transition:opacity 0.4s">
+        <div style="display:flex;justify-content:space-between;gap:8px;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.08em;color:#7A7A7A"><span>IN PREP</span><span style="color:#9A9A9A">FIVE-TONE HEALING ESSAY</span></div>
+        <div style="flex:1;background:#EFE9DA;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px"><span style="font-family:'Noto Serif SC',serif;font-weight:600;font-size:40px;color:#17130B;line-height:1">五音疗愈</span><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.3em;color:#5C5648">GUQIN ESSAY</span></div>
+      </div>
+    </div>
+    <div data-wallcol="0.5" style="flex:none;width:344px;background:#0C0C0C;border-right:1px solid #1F1F1F;transform:rotateY(-4.5deg) translateY(-2px) translateZ(9px)">
+      <div data-cat="IMPACT" style="height:292px;box-sizing:border-box;border-bottom:1px solid #1F1F1F;padding:12px 16px;display:flex;flex-direction:column;gap:10px;transition:opacity 0.4s">
+        <div style="display:flex;justify-content:space-between;gap:8px;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.08em;color:#7A7A7A"><span>REHAB CENTER</span><span style="color:#9A9A9A">CRAFT WORKSHOPS</span></div>
+        <div style="flex:1;background:#131313;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.05) 0 1px,transparent 1px 9px);display:flex;align-items:center;justify-content:center"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#6E6E6E;text-align:center;line-height:1.7">WORKSHOP — PHOTO 照片</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="display:flex;gap:5px"><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#EDEDED;border:1px solid #4A4A4A;border-radius:3px;padding:2px 7px">IMPACT</span><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#C4C4C4;background:#191919;border:1px solid #2E2E2E;border-radius:3px;padding:2px 7px">COMMUNITY</span></span><span style="font-family:'Geist Mono',monospace;font-size:9px;color:#7A7A7A">2018–</span></div>
+      </div>
+      <button type="button" data-open="dr" data-cat="RESEARCH" style="display:flex;width:100%;height:292px;box-sizing:border-box;border-bottom:1px solid #1F1F1F;padding:12px 16px;flex-direction:column;gap:10px;transition:opacity 0.4s,transform 0.35s cubic-bezier(0.16,1,0.3,1)" style-hover="transform:scale(1.03)">
+        <div style="display:flex;justify-content:space-between;gap:8px;width:100%;box-sizing:border-box;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.08em;color:#7A7A7A"><span>RESEARCH DRAFT</span><span style="color:#9A9A9A">ON-DEVICE DR TRIAGE</span></div>
+        <div style="flex:1;width:100%;box-sizing:border-box;background:#EFE9DA;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px"><span style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 80,'wght' 850;font-size:46px;color:#17130B;line-height:1;letter-spacing:-0.01em">DR·90D</span><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.3em;color:#5C5648">RETINOPATHY TRIAGE</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;width:100%;box-sizing:border-box"><span style="display:flex;gap:5px"><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#EDEDED;border:1px solid #4A4A4A;border-radius:3px;padding:2px 7px">RESEARCH</span><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#C4C4C4;background:#191919;border:1px solid #2E2E2E;border-radius:3px;padding:2px 7px">VISION</span></span><span style="font-family:'Geist Mono',monospace;font-size:9px;color:#7A7A7A">2026</span></div>
+      </button>
+      <div data-cat="CREATIVE" style="height:292px;box-sizing:border-box;border-bottom:1px solid #1F1F1F;padding:12px 16px;display:flex;flex-direction:column;gap:10px;transition:opacity 0.4s">
+        <div style="display:flex;justify-content:space-between;gap:8px;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.08em;color:#7A7A7A"><span>古琴</span><span style="color:#9A9A9A">GUQIN PRACTICE</span></div>
+        <div style="flex:1;background:#131313;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.05) 0 1px,transparent 1px 9px);display:flex;align-items:center;justify-content:center"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#6E6E6E;text-align:center;line-height:1.7">GUQIN — VIDEO 视频</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="display:flex;gap:5px"><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#C4C4C4;background:#191919;border:1px solid #2E2E2E;border-radius:3px;padding:2px 7px">CREATIVE</span><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#C4C4C4;background:#191919;border:1px solid #2E2E2E;border-radius:3px;padding:2px 7px">MUSIC</span></span><span style="font-family:'Geist Mono',monospace;font-size:9px;color:#7A7A7A">2025</span></div>
+      </div>
+      <div data-cat="IMPACT" style="height:292px;box-sizing:border-box;padding:12px 16px;display:flex;flex-direction:column;gap:10px;transition:opacity 0.4s">
+        <div style="display:flex;justify-content:space-between;gap:8px;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.08em;color:#7A7A7A"><span>SINCE AGE SIX</span><span style="color:#9A9A9A">CENTER VISITS</span></div>
+        <div style="flex:1;background:#0F0F0F;overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/charity-center-visit-640.jpg" alt="Amy and fellow volunteers with children at the rehabilitation centre" decoding="async"></div>
+      </div>
+    </div>
+    <div data-wallcol="1.5" style="flex:none;width:344px;background:#0C0C0C;border-right:1px solid #1F1F1F;transform:rotateY(-13.5deg) translateY(-21px) translateZ(27px)">
+      <button type="button" data-open="altay" data-cat="RESEARCH" style="display:flex;width:100%;height:292px;box-sizing:border-box;border-bottom:1px solid #1F1F1F;padding:12px 16px;flex-direction:column;gap:10px;transition:opacity 0.4s,transform 0.35s cubic-bezier(0.16,1,0.3,1)" style-hover="transform:scale(1.03)">
+        <div style="display:flex;justify-content:space-between;gap:8px;width:100%;box-sizing:border-box;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.08em;color:#7A7A7A"><span>FIELD STUDY</span><span style="color:#9A9A9A">ALTAY WATERSHED</span></div>
+        <div style="flex:1;width:100%;box-sizing:border-box;background:#17A98F;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px"><span style="font-family:'Noto Sans SC',sans-serif;font-weight:700;font-size:50px;color:#FFF;line-height:1">布尔津</span><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.3em;color:rgba(255,255,255,0.9)">BURQIN RIVER</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;width:100%;box-sizing:border-box"><span style="display:flex;gap:5px"><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#EDEDED;border:1px solid #4A4A4A;border-radius:3px;padding:2px 7px">RESEARCH</span><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#C4C4C4;background:#191919;border:1px solid #2E2E2E;border-radius:3px;padding:2px 7px">COMMUNITY</span></span><span style="font-family:'Geist Mono',monospace;font-size:9px;color:#7A7A7A">2025</span></div>
+      </button>
+      <div data-cat="ENGINEERING" style="height:292px;box-sizing:border-box;border-bottom:1px solid #1F1F1F;padding:12px 16px;display:flex;flex-direction:column;gap:10px;transition:opacity 0.4s">
+        <div style="display:flex;justify-content:space-between;gap:8px;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.08em;color:#7A7A7A"><span>AMY ZHU LAB</span><span style="color:#9A9A9A">BUILD LOG</span></div>
+        <div style="flex:1;background:#0F0F0F;overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/robotics-build-640.jpg" alt="Amy assembling the chassis of the ball collection robot" decoding="async"></div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="display:flex;gap:5px"><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#EDEDED;border:1px solid #4A4A4A;border-radius:3px;padding:2px 7px">ENGINEERING</span></span><span style="font-family:'Geist Mono',monospace;font-size:9px;color:#7A7A7A">2024</span></div>
+      </div>
+      <div data-cat="CREATIVE" style="height:292px;box-sizing:border-box;border-bottom:1px solid #1F1F1F;padding:12px 16px;display:flex;flex-direction:column;gap:10px;transition:opacity 0.4s">
+        <div style="display:flex;justify-content:space-between;gap:8px;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.08em;color:#7A7A7A"><span>THEATRE</span><span style="color:#9A9A9A">THE LITTLE PRINCE</span></div>
+        <div style="flex:1;background:#0F0F0F;overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/stage-qing-solo-640.jpg" alt="Amy delivering a monologue in period costume" decoding="async"></div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="display:flex;gap:5px"><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#C4C4C4;background:#191919;border:1px solid #2E2E2E;border-radius:3px;padding:2px 7px">CREATIVE</span><span style="font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.08em;color:#C4C4C4;background:#191919;border:1px solid #2E2E2E;border-radius:3px;padding:2px 7px">STAGE</span></span><span style="font-family:'Geist Mono',monospace;font-size:9px;color:#7A7A7A">2021</span></div>
+      </div>
+      <div data-cat="IMPACT" style="height:292px;box-sizing:border-box;padding:12px 16px;display:flex;flex-direction:column;gap:10px;transition:opacity 0.4s">
+        <div style="display:flex;justify-content:space-between;gap:8px;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.08em;color:#7A7A7A"><span>GALA</span><span style="color:#9A9A9A">¥150K RAISED</span></div>
+        <div style="flex:1;background:#0F0F0F;overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/stage-curtain-speech-640.jpg" alt="Amy speaking into a microphone with her castmates after a performance" decoding="async"></div>
+      </div>
+    </div>
+    <div data-wallcol="2.5" style="flex:none;width:344px;background:#0C0C0C;transform:rotateY(-22.5deg) translateY(-59px) translateZ(45px)">
+      <div style="height:292px;box-sizing:border-box;border-bottom:1px solid #1F1F1F;padding:12px 16px;display:flex"><div style="flex:1;background:#0F0F0F;overflow:hidden"><img class="slot-img" src="assets/img/stage-ensemble-seated-640.jpg" alt="Amy seated on stage during a performance" loading="lazy" decoding="async"></div></div>
+      <div style="height:292px;box-sizing:border-box;border-bottom:1px solid #1F1F1F;padding:12px 16px;display:flex;flex-direction:column;gap:10px"><div style="flex:1;background:#0F0F0F;overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/stage-period-basket-640.jpg" alt="Amy with the ensemble in a period costume scene" loading="lazy" decoding="async"></div><div style="display:flex;justify-content:flex-end"><span style="font-family:'Geist Mono',monospace;font-size:9px;color:#7A7A7A">2024</span></div></div>
+      <div style="height:292px;box-sizing:border-box;border-bottom:1px solid #1F1F1F;padding:12px 16px;display:flex;flex-direction:column;gap:10px"><div style="flex:1;background:#0F0F0F;overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/stage-qing-throne-a-640.jpg" alt="Amy in an elaborate period costume on stage" loading="lazy" decoding="async"></div><div style="display:flex;justify-content:flex-end"><span style="font-family:'Geist Mono',monospace;font-size:9px;color:#7A7A7A">2023</span></div></div>
+      <div style="height:292px;box-sizing:border-box;padding:12px 16px;display:flex"><div style="flex:1;background:#0F0F0F;overflow:hidden"><img class="slot-img" src="assets/img/backstage-flowers-640.jpg" alt="Amy with flowers after a performance" loading="lazy" decoding="async"></div></div>
+    </div>
+  </div>
+  </div>
+  <div style="position:absolute;top:0;left:0;right:0;height:150px;background:linear-gradient(rgba(0,0,0,0.88),rgba(0,0,0,0));pointer-events:none;z-index:2"></div>
+</section>
+
+<!-- ================= VIEW: WORK LIST ================= -->
+<section data-view="list" data-screen-label="Work — List" style="position:fixed;inset:0;display:none;background:#0A0A0A">
+  <div data-scroll="list" style="height:100%;overflow-y:auto;padding:150px 24px 140px;box-sizing:border-box">
+    <div style="display:flex;align-items:baseline;gap:40px;border-bottom:1px solid #2A2A2A;padding-bottom:26px;flex-wrap:wrap">
+      <span style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 100,'wght' 640;font-size:clamp(48px,6vw,88px);letter-spacing:-0.04em;line-height:0.95;color:#F2F1EE">All projects</span>
+      <span style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 100,'wght' 640;font-size:clamp(48px,6vw,88px);letter-spacing:-0.04em;line-height:0.95;color:#3A3A3A">10 projects</span>
+    </div>
+    <div class="list-year" style="display:grid;grid-template-columns:minmax(120px,300px) 1fr;padding:44px 0 30px;border-bottom:1px solid #2A2A2A">
+      <div style="font-family:'Archivo',sans-serif;font-weight:600;font-size:30px;color:#F2F1EE">2026</div>
+      <div>
+        <button type="button" data-open="dr" data-cat="RESEARCH" class="list-row" style="display:grid;grid-template-columns:1fr auto minmax(140px,220px);gap:24px;align-items:center;width:100%;padding:16px 0;border-bottom:1px solid #232323;transition:opacity 0.4s" style-hover="background:rgba(255,255,255,0.03)"><span style="font-family:'Archivo',sans-serif;font-weight:550;font-size:22px;color:#F2F1EE">On-device DR Triage</span><span style="display:flex;gap:6px;flex-wrap:wrap"><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#EDEDED;border:1px solid #4A4A4A;border-radius:999px;padding:5px 12px">RESEARCH</span><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#C4C4C4;background:#1B1B1B;border:1px solid #2E2E2E;border-radius:999px;padding:5px 12px">VISION</span><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#C4C4C4;background:#1B1B1B;border:1px solid #2E2E2E;border-radius:999px;padding:5px 12px">AI</span></span><span style="font-family:'Archivo',sans-serif;font-size:15px;color:#CFCFCF;text-align:right">Research draft</span></button>
+      </div>
+    </div>
+    <div class="list-year" style="display:grid;grid-template-columns:minmax(120px,300px) 1fr;padding:44px 0 30px;border-bottom:1px solid #2A2A2A">
+      <div style="font-family:'Archivo',sans-serif;font-weight:600;font-size:30px;color:#F2F1EE">2025</div>
+      <div>
+        <button type="button" data-open="ball" data-cat="ENGINEERING" class="list-row" style="display:grid;grid-template-columns:1fr auto minmax(140px,220px);gap:24px;align-items:center;width:100%;padding:16px 0;border-bottom:1px solid #232323;transition:opacity 0.4s" style-hover="background:rgba(255,255,255,0.03)"><span style="font-family:'Archivo',sans-serif;font-weight:550;font-size:22px;color:#F2F1EE">Ball Collection &amp; Cleaning System</span><span style="display:flex;gap:6px;flex-wrap:wrap"><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#EDEDED;border:1px solid #4A4A4A;border-radius:999px;padding:5px 12px">ENGINEERING</span><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#C4C4C4;background:#1B1B1B;border:1px solid #2E2E2E;border-radius:999px;padding:5px 12px">VISION</span><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#C4C4C4;background:#1B1B1B;border:1px solid #2E2E2E;border-radius:999px;padding:5px 12px">ROBOTICS</span></span><span style="font-family:'Archivo',sans-serif;font-size:15px;color:#CFCFCF;text-align:right">Grand Prize 特等奖</span></button>
+        <button type="button" data-open="altay" data-cat="RESEARCH" class="list-row" style="display:grid;grid-template-columns:1fr auto minmax(140px,220px);gap:24px;align-items:center;width:100%;padding:16px 0;border-bottom:1px solid #232323;transition:opacity 0.4s" style-hover="background:rgba(255,255,255,0.03)"><span style="font-family:'Archivo',sans-serif;font-weight:550;font-size:22px;color:#F2F1EE">Altay Watershed Field Study</span><span style="display:flex;gap:6px;flex-wrap:wrap"><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#EDEDED;border:1px solid #4A4A4A;border-radius:999px;padding:5px 12px">RESEARCH</span><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#C4C4C4;background:#1B1B1B;border:1px solid #2E2E2E;border-radius:999px;padding:5px 12px">FIELD</span><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#C4C4C4;background:#1B1B1B;border:1px solid #2E2E2E;border-radius:999px;padding:5px 12px">COMMUNITY</span></span><span style="font-family:'Archivo',sans-serif;font-size:15px;color:#CFCFCF;text-align:right">Altay, Xinjiang</span></button>
+        <div data-cat="CREATIVE" class="list-row" style="display:grid;grid-template-columns:1fr auto minmax(140px,220px);gap:24px;align-items:center;padding:16px 0;border-bottom:1px solid #232323;transition:opacity 0.4s"><span style="font-family:'Archivo',sans-serif;font-weight:550;font-size:22px;color:#F2F1EE">Guqin Five-Tone Healing Essay</span><span style="display:flex;gap:6px;flex-wrap:wrap"><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#EDEDED;border:1px solid #4A4A4A;border-radius:999px;padding:5px 12px">CREATIVE</span><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#C4C4C4;background:#1B1B1B;border:1px solid #2E2E2E;border-radius:999px;padding:5px 12px">MUSIC</span><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#C4C4C4;background:#1B1B1B;border:1px solid #2E2E2E;border-radius:999px;padding:5px 12px">WRITING</span></span><span style="font-family:'Archivo',sans-serif;font-size:15px;color:#CFCFCF;text-align:right">In preparation</span></div>
+      </div>
+    </div>
+    <div class="list-year" style="display:grid;grid-template-columns:minmax(120px,300px) 1fr;padding:44px 0 30px;border-bottom:1px solid #2A2A2A">
+      <div style="font-family:'Archivo',sans-serif;font-weight:600;font-size:30px;color:#F2F1EE">2023</div>
+      <div>
+        <button type="button" data-open="fire" data-cat="ENGINEERING" class="list-row" style="display:grid;grid-template-columns:1fr auto minmax(140px,220px);gap:24px;align-items:center;width:100%;padding:16px 0;border-bottom:1px solid #232323;transition:opacity 0.4s" style-hover="background:rgba(255,255,255,0.03)"><span style="font-family:'Archivo',sans-serif;font-weight:550;font-size:22px;color:#F2F1EE">Campus Fire Safety Patrol Bot</span><span style="display:flex;gap:6px;flex-wrap:wrap"><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#EDEDED;border:1px solid #4A4A4A;border-radius:999px;padding:5px 12px">ENGINEERING</span><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#C4C4C4;background:#1B1B1B;border:1px solid #2E2E2E;border-radius:999px;padding:5px 12px">SYSTEMS</span><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#C4C4C4;background:#1B1B1B;border:1px solid #2E2E2E;border-radius:999px;padding:5px 12px">SENSING</span></span><span style="font-family:'Archivo',sans-serif;font-size:15px;color:#CFCFCF;text-align:right">Campus</span></button>
+        <div data-cat="IMPACT" class="list-row" style="display:grid;grid-template-columns:1fr auto minmax(140px,220px);gap:24px;align-items:center;padding:16px 0;border-bottom:1px solid #232323;transition:opacity 0.4s"><span style="font-family:'Archivo',sans-serif;font-weight:550;font-size:22px;color:#F2F1EE">Charity Gala — ¥150K Raised</span><span style="display:flex;gap:6px;flex-wrap:wrap"><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#EDEDED;border:1px solid #4A4A4A;border-radius:999px;padding:5px 12px">IMPACT</span><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#C4C4C4;background:#1B1B1B;border:1px solid #2E2E2E;border-radius:999px;padding:5px 12px">EVENT</span></span><span style="font-family:'Archivo',sans-serif;font-size:15px;color:#CFCFCF;text-align:right">Rehab Center</span></div>
+        <div data-cat="IMPACT" class="list-row" style="display:grid;grid-template-columns:1fr auto minmax(140px,220px);gap:24px;align-items:center;padding:16px 0;border-bottom:1px solid #232323;transition:opacity 0.4s"><span style="font-family:'Archivo',sans-serif;font-weight:550;font-size:22px;color:#F2F1EE">Artemisia Hammer Craft Sales</span><span style="display:flex;gap:6px;flex-wrap:wrap"><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#EDEDED;border:1px solid #4A4A4A;border-radius:999px;padding:5px 12px">IMPACT</span><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#C4C4C4;background:#1B1B1B;border:1px solid #2E2E2E;border-radius:999px;padding:5px 12px">CRAFT</span><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#C4C4C4;background:#1B1B1B;border:1px solid #2E2E2E;border-radius:999px;padding:5px 12px">HERITAGE</span></span><span style="font-family:'Archivo',sans-serif;font-size:15px;color:#CFCFCF;text-align:right">¥15K to date</span></div>
+      </div>
+    </div>
+    <div class="list-year" style="display:grid;grid-template-columns:minmax(120px,300px) 1fr;padding:44px 0 30px">
+      <div style="font-family:'Archivo',sans-serif;font-weight:600;font-size:30px;color:#F2F1EE">2018—</div>
+      <div>
+        <div data-cat="IMPACT" class="list-row" style="display:grid;grid-template-columns:1fr auto minmax(140px,220px);gap:24px;align-items:center;padding:16px 0;border-bottom:1px solid #232323;transition:opacity 0.4s"><span style="font-family:'Archivo',sans-serif;font-weight:550;font-size:22px;color:#F2F1EE">Rehab Center Volunteering</span><span style="display:flex;gap:6px;flex-wrap:wrap"><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#EDEDED;border:1px solid #4A4A4A;border-radius:999px;padding:5px 12px">IMPACT</span><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#C4C4C4;background:#1B1B1B;border:1px solid #2E2E2E;border-radius:999px;padding:5px 12px">COMMUNITY</span></span><span style="font-family:'Archivo',sans-serif;font-size:15px;color:#CFCFCF;text-align:right">Ongoing, ~8 yrs</span></div>
+        <div data-cat="CREATIVE" class="list-row" style="display:grid;grid-template-columns:1fr auto minmax(140px,220px);gap:24px;align-items:center;padding:16px 0;border-bottom:1px solid #232323;transition:opacity 0.4s"><span style="font-family:'Archivo',sans-serif;font-weight:550;font-size:22px;color:#F2F1EE">Rhythmic Gymnastics</span><span style="display:flex;gap:6px;flex-wrap:wrap"><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#EDEDED;border:1px solid #4A4A4A;border-radius:999px;padding:5px 12px">CREATIVE</span><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#C4C4C4;background:#1B1B1B;border:1px solid #2E2E2E;border-radius:999px;padding:5px 12px">SPORT</span></span><span style="font-family:'Archivo',sans-serif;font-size:15px;color:#CFCFCF;text-align:right">Beijing 6th</span></div>
+        <div data-cat="CREATIVE" class="list-row" style="display:grid;grid-template-columns:1fr auto minmax(140px,220px);gap:24px;align-items:center;padding:16px 0;border-bottom:1px solid #232323;transition:opacity 0.4s"><span style="font-family:'Archivo',sans-serif;font-weight:550;font-size:22px;color:#F2F1EE">Musical Theatre</span><span style="display:flex;gap:6px;flex-wrap:wrap"><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#EDEDED;border:1px solid #4A4A4A;border-radius:999px;padding:5px 12px">CREATIVE</span><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#C4C4C4;background:#1B1B1B;border:1px solid #2E2E2E;border-radius:999px;padding:5px 12px">STAGE</span></span><span style="font-family:'Archivo',sans-serif;font-size:15px;color:#CFCFCF;text-align:right">3 productions</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VIEW: ABOUT ================= -->
+<section data-view="about" data-screen-label="About" style="position:fixed;inset:0;display:none;background:#0A0A0A;overflow:hidden">
+  <div style="position:absolute;left:24px;top:112px;z-index:40;display:flex;padding:4px;background:rgba(60,60,60,0.5);backdrop-filter:blur(10px);border-radius:999px;font-family:'Archivo',sans-serif;font-size:14px">
+    <button type="button" data-abmode="profile" data-abmode-active="1" style="padding:9px 20px;border-radius:999px;background:#FFF;color:#0A0A0A;font-weight:500;transition:background 0.3s,color 0.3s">Profile</button>
+    <button type="button" data-abmode="approach" style="padding:9px 20px;border-radius:999px;color:#E0E0E0;transition:background 0.3s,color 0.3s">Approach</button>
+  </div>
+  <div class="about-body" style="position:absolute;left:0;right:0;top:150px;padding:0 4vw 0 clamp(120px,26vw,470px)">
+    <div data-abpane="profile" style="display:flex;gap:18px">
+      <span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#9C9C9C;padding-top:16px">PROFILE</span>
+      <div>
+        <h1 data-rise="1" style="margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 96,'wght' 800;font-size:clamp(44px,min(9vw,14vh),130px);line-height:0.96;letter-spacing:-0.035em;color:#F5F4F1;text-transform:uppercase">I build,<br>I explore,<br>I act.<span style="font-size:0.34em;vertical-align:top;line-height:1">®</span></h1>
+        <p style="margin:34px 0 0;max-width:560px;font-family:'Archivo',sans-serif;font-weight:400;font-size:17px;line-height:1.55;color:#B9B9B9">Student builder working across cognitive science, robotics and social impact — turning abstract ideas into running systems, and systems into real-world change.</p>
+      </div>
+    </div>
+    <div data-abpane="approach" style="display:none;gap:18px">
+      <span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#9C9C9C;padding-top:16px">APPROACH</span>
+      <div>
+        <h1 data-rise="1" style="margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 96,'wght' 800;font-size:clamp(38px,min(7.2vw,11.5vh),104px);line-height:0.98;letter-spacing:-0.035em;color:#F5F4F1;text-transform:uppercase">See it.<br>Build it.<br>Test it. Ship it.</h1>
+        <p style="margin:34px 0 0;max-width:560px;font-family:'Archivo',sans-serif;font-weight:400;font-size:17px;line-height:1.55;color:#B9B9B9">"If Amy is in the group, things get moved forward." I take initiative, turn ideas into execution, and stay long enough for the result to matter — eight years at the same rehab center, two rebuilds of the same robot.</p>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute;left:0;right:0;bottom:0;overflow:hidden">
+    <div data-strip="1" style="display:flex;gap:3px;width:max-content;animation:strip 60s linear infinite">
+      <div style="flex:none;width:300px;height:216px;background:#0F0F0F;overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/stage-solo-recital-640.jpg" alt="Amy performing a solo scene on stage" loading="lazy" decoding="async"></div>
+      <div style="flex:none;width:300px;height:216px;background:#0F0F0F;overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/stage-period-basket-640.jpg" alt="Amy with the ensemble in a period costume scene" loading="lazy" decoding="async"></div>
+      <div style="flex:none;width:300px;height:216px;background:#ED6A2F;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px"><span style="font-family:'Noto Sans SC',sans-serif;font-weight:700;font-size:44px;color:#FFF">行动</span><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.3em;color:rgba(255,255,255,0.9)">ACTION FIRST</span></div>
+      <div style="flex:none;width:300px;height:216px;background:#0F0F0F;overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/stage-ensemble-seated-640.jpg" alt="Amy seated on stage during a performance" loading="lazy" decoding="async"></div>
+      <div style="flex:none;width:300px;height:216px;background:#0F0F0F;overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/charity-center-visit-640.jpg" alt="Amy and fellow volunteers with children at the rehabilitation centre" loading="lazy" decoding="async"></div>
+      <div style="flex:none;width:300px;height:216px;background:#0F0F0F;overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/robotics-build-640.jpg" alt="Amy assembling the chassis of the ball collection robot" loading="lazy" decoding="async"></div>
+      <div style="flex:none;width:300px;height:216px;background:#0F0F0F;overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/stage-solo-recital-640.jpg" alt="" loading="lazy" decoding="async"></div>
+      <div style="flex:none;width:300px;height:216px;background:#0F0F0F;overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/stage-period-basket-640.jpg" alt="" loading="lazy" decoding="async"></div>
+      <div style="flex:none;width:300px;height:216px;background:#ED6A2F;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px"><span style="font-family:'Noto Sans SC',sans-serif;font-weight:700;font-size:44px;color:#FFF">行动</span><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.3em;color:rgba(255,255,255,0.9)">ACTION FIRST</span></div>
+      <div style="flex:none;width:300px;height:216px;background:#0F0F0F;overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/stage-ensemble-seated-640.jpg" alt="" loading="lazy" decoding="async"></div>
+      <div style="flex:none;width:300px;height:216px;background:#0F0F0F;overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/charity-center-visit-640.jpg" alt="" loading="lazy" decoding="async"></div>
+      <div style="flex:none;width:300px;height:216px;background:#0F0F0F;overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/robotics-build-640.jpg" alt="" loading="lazy" decoding="async"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VIEW: CONTACT ================= -->
+<section data-view="contact" data-screen-label="Contact" style="position:fixed;inset:0;display:none;background:#0A0A0A;overflow:hidden">
+  <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px">
+    <div style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#9C9C9C;margin-bottom:26px">CONTACT · 联系</div>
+    <h1 data-rise="1" style="margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 96,'wght' 800;font-size:clamp(60px,10vw,150px);line-height:0.95;letter-spacing:-0.035em;color:#F5F4F1;text-transform:uppercase">Let's talk.</h1>
+    <a href="mailto:yaxuan.zhu507@gmail.com" style="margin-top:44px;font-family:'Geist Mono',monospace;font-size:clamp(15px,1.8vw,22px);letter-spacing:0.04em;color:#F2F1EE;text-decoration:none;border-bottom:1px solid #4A4A4A;padding-bottom:6px;transition:color 0.3s,border-color 0.3s" style-hover="color:#ED6A2F;border-color:#ED6A2F">yaxuan.zhu507@gmail.com</a>
+    <div style="margin-top:60px;display:flex;gap:40px;align-items:center;font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#9C9C9C">
+      <span>BEIJING, CN · <span data-clock="bj">--:--</span></span>
+      <span style="width:104px;height:104px;background:#131313;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.05) 0 1px,transparent 1px 9px);display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.7">WECHAT QR<br>微信二维码</span>
+      <span>PORTFOLIO — 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CASE VIEWS ================= -->
+<section data-view="case-ball" data-case-color="#ED6A2F" data-screen-label="Case — Ball Collector" style="position:fixed;inset:0;display:none;background:#ED6A2F;color:#FFF">
+  <div data-scroll="case-ball" style="height:100%;overflow-y:auto">
+    <div style="min-height:100vh;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 4.5vw 40px">
+      <div style="text-align:center;margin-bottom:auto">
+        <div style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.2em;color:rgba(255,255,255,0.9);margin-bottom:20px">AMY ZHU LAB · ENGINEERING · 2025</div>
+        <h1 data-case-title="1" style="margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72,'wght' 900;font-size:clamp(64px,10vw,150px);line-height:0.9;letter-spacing:-0.01em;text-transform:uppercase;color:#FFF">The Ball Collector</h1>
+        <div style="margin-top:18px;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:0.26em;color:rgba(255,255,255,0.85)">基于视觉的捡拾清洁一体装置 — GRAND PRIZE 特等奖</div>
+      </div>
+      <div style="height:1px;background:rgba(255,255,255,0.4);margin:34px 0"></div>
+      <div class="case-top" style="display:grid;grid-template-columns:minmax(220px,300px) 1fr minmax(220px,300px);gap:clamp(24px,4vw,60px);align-items:start">
+        <p style="margin:0;font-family:'Archivo',sans-serif;font-weight:500;font-size:16px;line-height:1.55">A vision-guided rover that spares elderly players a thousand bends — craft and computer vision for the neighbourhood court.</p>
+        <div style="height:clamp(240px,38vh,352px);background:rgba(0,0,0,0.08);overflow:hidden;display:flex;align-items:center;justify-content:center"><img class="slot-img" src="assets/img/robotics-build-1200.jpg" alt="Amy building the ball collection robot with a teammate" decoding="async"></div>
+        <div>
+          <div style="display:flex;align-items:center;gap:8px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.4)"><span style="width:7px;height:7px;border-radius:50%;background:#FFF"></span><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.22em">FEATURES</span></div>
+          <div style="display:flex;justify-content:flex-end;padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.4)"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#ED6A2F;background:#FFF;border-radius:999px;padding:6px 13px">VISION</span></div>
+          <div style="display:flex;justify-content:flex-end;padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.4)"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#ED6A2F;background:#FFF;border-radius:999px;padding:6px 13px">CHASSIS</span></div>
+          <div style="display:flex;justify-content:flex-end;padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.4)"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#ED6A2F;background:#FFF;border-radius:999px;padding:6px 13px">CLEANING DRUM</span></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:40px;align-items:flex-end;justify-content:space-between;margin-top:40px;flex-wrap:wrap">
+        <p style="margin:0;max-width:760px;font-family:'Archivo',sans-serif;font-weight:750;font-size:clamp(20px,2vw,28px);line-height:1.14;letter-spacing:-0.01em">Sees, collects and cleans in one pass — built, tested and rebuilt with the players it serves.</p>
+        <div style="display:flex;gap:26px;font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.12em;color:rgba(255,255,255,0.9);text-align:right"><span>GRAND PRIZE<br>特等奖</span><span>3 SUBSYSTEMS<br>一体装置</span><span>ON-COURT<br>实地测试</span></div>
+      </div>
+      <div style="text-align:center;margin-top:34px;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.22em;color:rgba(255,255,255,0.8)">SCROLL ↓</div>
+    </div>
+    <div class="case-body" style="padding:90px 4.5vw 60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(30px,4vw,70px)">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.4);margin-bottom:20px"><span style="width:7px;height:7px;border-radius:50%;background:#FFF"></span><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.22em">ABOUT</span></div>
+        <p style="margin:0;font-family:'Archivo',sans-serif;font-weight:500;font-size:16px;line-height:1.55">The idea came from watching elderly players at our community table-tennis room bend, again and again, for stray balls. I wanted the repetitive part automated so the joyful part could stay human.</p>
+        <p style="margin:16px 0 0;font-family:'Archivo',sans-serif;font-weight:500;font-size:16px;line-height:1.55">The system sees, collects and cleans in a single pass — a camera picks out balls against the floor, the chassis plans a sweep route, and a cleaning drum returns them ready to serve. Built, tested and rebuilt until it earned the Grand Prize.</p>
+        <p style="margin:26px 0 0;font-family:'Archivo',sans-serif;font-weight:700;font-size:16px">Highlights:</p>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;font-family:'Archivo',sans-serif;font-weight:500;font-size:15px;line-height:1.4">
+          <div style="display:flex;gap:9px"><span>•</span><span>Grand Prize 特等奖 — youth innovation</span></div>
+          <div style="display:flex;gap:9px"><span>•</span><span>Vision → pickup → clean, one pass</span></div>
+          <div style="display:flex;gap:9px"><span>•</span><span>Designed with elderly players, on court</span></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="height:280px;background:rgba(255,255,255,0.14);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.22) 0 1px,transparent 1px 10px);display:flex;align-items:center;justify-content:center"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.16em;text-align:center;line-height:1.8">GALLERY — FIELD TEST<br>试验 照片</span></div>
+        <div style="height:280px;background:rgba(255,255,255,0.14);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.22) 0 1px,transparent 1px 10px);display:flex;align-items:center;justify-content:center"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.16em;text-align:center;line-height:1.8">GALLERY — VISION DEBUG UI<br>界面 截图</span></div>
+      </div>
+    </div>
+    <button type="button" data-open="fire" style="display:block;width:100%;box-sizing:border-box;background:#C6362B;color:#FFF;padding:70px 4.5vw 90px;text-align:center;transition:filter 0.3s" style-hover="filter:brightness(1.08)">
+      <span style="display:block;font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.24em;margin-bottom:18px">NEXT CASE</span>
+      <span style="display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72,'wght' 900;font-size:clamp(44px,6vw,90px);line-height:0.95;letter-spacing:-0.01em;text-transform:uppercase">The Patrol Bot →</span>
+    </button>
+  </div>
+</section>
+
+<section data-view="case-fire" data-case-color="#C6362B" data-screen-label="Case — Patrol Bot" style="position:fixed;inset:0;display:none;background:#C6362B;color:#FFF">
+  <div data-scroll="case-fire" style="height:100%;overflow-y:auto">
+    <div style="min-height:100vh;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 4.5vw 40px">
+      <div style="text-align:center;margin-bottom:auto">
+        <div style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.2em;color:rgba(255,255,255,0.9);margin-bottom:20px">CAMPUS · ENGINEERING · 2023–24</div>
+        <h1 data-case-title="1" style="margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72,'wght' 900;font-size:clamp(64px,10vw,150px);line-height:0.9;letter-spacing:-0.01em;text-transform:uppercase;color:#FFF">The Patrol Bot</h1>
+        <div style="margin-top:18px;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:0.26em;color:rgba(255,255,255,0.85)">校园火灾安全监测机器人 — ALWAYS ON WATCH</div>
+      </div>
+      <div style="height:1px;background:rgba(255,255,255,0.4);margin:34px 0"></div>
+      <div class="case-top" style="display:grid;grid-template-columns:minmax(220px,300px) 1fr minmax(220px,300px);gap:clamp(24px,4vw,60px);align-items:start">
+        <p style="margin:0;font-family:'Archivo',sans-serif;font-weight:500;font-size:16px;line-height:1.55">Conceived after a campus fire made the news — a rover that patrols corridors, watching for heat and smoke while the school sleeps.</p>
+        <div style="height:clamp(240px,38vh,352px);background:rgba(255,255,255,0.14);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.22) 0 1px,transparent 1px 10px);display:flex;align-items:center;justify-content:center"><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.16em;text-align:center;line-height:1.8">HERO — PATROL RUN<br>NIGHT FOOTAGE 视频</span></div>
+        <div>
+          <div style="display:flex;align-items:center;gap:8px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.4)"><span style="width:7px;height:7px;border-radius:50%;background:#FFF"></span><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.22em">FEATURES</span></div>
+          <div style="display:flex;justify-content:flex-end;padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.4)"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#C6362B;background:#FFF;border-radius:999px;padding:6px 13px">THERMAL SENSING</span></div>
+          <div style="display:flex;justify-content:flex-end;padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.4)"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#C6362B;background:#FFF;border-radius:999px;padding:6px 13px">ROUTE PATROL</span></div>
+          <div style="display:flex;justify-content:flex-end;padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.4)"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#C6362B;background:#FFF;border-radius:999px;padding:6px 13px">ALERT RELAY</span></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:40px;align-items:flex-end;justify-content:space-between;margin-top:40px;flex-wrap:wrap">
+        <p style="margin:0;max-width:760px;font-family:'Archivo',sans-serif;font-weight:750;font-size:clamp(20px,2vw,28px);line-height:1.14;letter-spacing:-0.01em">From a news story to a working watchman — sensing, deciding and raising the alarm on its own.</p>
+        <div style="display:flex;gap:26px;font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.12em;color:rgba(255,255,255,0.9);text-align:right"><span>NIGHT PATROL<br>夜间巡逻</span><span>HEAT + SMOKE<br>双重监测</span><span>2 BUILDS<br>两轮迭代</span></div>
+      </div>
+      <div style="text-align:center;margin-top:34px;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.22em;color:rgba(255,255,255,0.8)">SCROLL ↓</div>
+    </div>
+    <div class="case-body" style="padding:90px 4.5vw 60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(30px,4vw,70px)">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.4);margin-bottom:20px"><span style="width:7px;height:7px;border-radius:50%;background:#FFF"></span><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.22em">ABOUT</span></div>
+        <p style="margin:0;font-family:'Archivo',sans-serif;font-weight:500;font-size:16px;line-height:1.55">A campus fire in the news made safety feel personal. Instead of waiting for alarms mounted on ceilings, I wanted something that moves — a robot that goes looking for trouble before it spreads.</p>
+        <p style="margin:16px 0 0;font-family:'Archivo',sans-serif;font-weight:500;font-size:16px;line-height:1.55">Across two builds it learned to follow patrol routes, read heat and smoke signatures, and relay alerts the moment something looks wrong. The second iteration rethought the chassis and sensor placement from field notes of the first.</p>
+        <p style="margin:26px 0 0;font-family:'Archivo',sans-serif;font-weight:700;font-size:16px">Highlights:</p>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;font-family:'Archivo',sans-serif;font-weight:500;font-size:15px;line-height:1.4">
+          <div style="display:flex;gap:9px"><span>•</span><span>Two full build iterations, 2023–24</span></div>
+          <div style="display:flex;gap:9px"><span>•</span><span>Heat + smoke sensing on a moving platform</span></div>
+          <div style="display:flex;gap:9px"><span>•</span><span>Autonomous patrol with alert relay</span></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="height:280px;background:rgba(255,255,255,0.14);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.22) 0 1px,transparent 1px 10px);display:flex;align-items:center;justify-content:center"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.16em;text-align:center;line-height:1.8">GALLERY — CHASSIS V1 → V2<br>迭代 照片</span></div>
+        <div style="height:280px;background:rgba(255,255,255,0.14);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.22) 0 1px,transparent 1px 10px);display:flex;align-items:center;justify-content:center"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.16em;text-align:center;line-height:1.8">GALLERY — SENSOR ARRAY<br>传感器 照片</span></div>
+      </div>
+    </div>
+    <button type="button" data-open="altay" style="display:block;width:100%;box-sizing:border-box;background:#17A98F;color:#FFF;padding:70px 4.5vw 90px;text-align:center;transition:filter 0.3s" style-hover="filter:brightness(1.08)">
+      <span style="display:block;font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.24em;margin-bottom:18px">NEXT CASE</span>
+      <span style="display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72,'wght' 900;font-size:clamp(44px,6vw,90px);line-height:0.95;letter-spacing:-0.01em;text-transform:uppercase">Burqin River →</span>
+    </button>
+  </div>
+</section>
+
+<section data-view="case-altay" data-case-color="#17A98F" data-screen-label="Case — Burqin River" style="position:fixed;inset:0;display:none;background:#17A98F;color:#FFF">
+  <div data-scroll="case-altay" style="height:100%;overflow-y:auto">
+    <div style="min-height:100vh;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 4.5vw 40px">
+      <div style="text-align:center;margin-bottom:auto">
+        <div style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.2em;color:rgba(255,255,255,0.9);margin-bottom:20px">FIELD STUDY · RESEARCH · 2025</div>
+        <h1 data-case-title="1" style="margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72,'wght' 900;font-size:clamp(64px,10vw,150px);line-height:0.9;letter-spacing:-0.01em;text-transform:uppercase;color:#FFF">Burqin River</h1>
+        <div style="margin-top:18px;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:0.26em;color:rgba(255,255,255,0.85)">新疆阿勒泰水资源与农业系统调研 — FIELD STUDY</div>
+      </div>
+      <div style="height:1px;background:rgba(255,255,255,0.4);margin:34px 0"></div>
+      <div class="case-top" style="display:grid;grid-template-columns:minmax(220px,300px) 1fr minmax(220px,300px);gap:clamp(24px,4vw,60px);align-items:start">
+        <p style="margin:0;font-family:'Archivo',sans-serif;font-weight:500;font-size:16px;line-height:1.55">Ten days on the Burqin — interviews with farmers, water sampling, and a hydrological convergence model turned into advocacy for the people downstream.</p>
+        <div style="height:clamp(240px,38vh,352px);background:rgba(255,255,255,0.14);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.22) 0 1px,transparent 1px 10px);display:flex;align-items:center;justify-content:center"><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.16em;text-align:center;line-height:1.8">HERO — RIVER DRONE<br>FOOTAGE 视频</span></div>
+        <div>
+          <div style="display:flex;align-items:center;gap:8px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.4)"><span style="width:7px;height:7px;border-radius:50%;background:#FFF"></span><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.22em">FEATURES</span></div>
+          <div style="display:flex;justify-content:flex-end;padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.4)"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#17A98F;background:#FFF;border-radius:999px;padding:6px 13px">INTERVIEWS</span></div>
+          <div style="display:flex;justify-content:flex-end;padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.4)"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#17A98F;background:#FFF;border-radius:999px;padding:6px 13px">WATER SAMPLING</span></div>
+          <div style="display:flex;justify-content:flex-end;padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.4)"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#17A98F;background:#FFF;border-radius:999px;padding:6px 13px">FLOW MODEL</span></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:40px;align-items:flex-end;justify-content:space-between;margin-top:40px;flex-wrap:wrap">
+        <p style="margin:0;max-width:760px;font-family:'Archivo',sans-serif;font-weight:750;font-size:clamp(20px,2vw,28px);line-height:1.14;letter-spacing:-0.01em">A river understood from both banks — data in one hand, farmers' stories in the other.</p>
+        <div style="display:flex;gap:26px;font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.12em;color:rgba(255,255,255,0.9);text-align:right"><span>CONVERGENCE<br>汇流模型</span><span>SAMPLING<br>水样采集</span><span>STAKEHOLDERS<br>多方沟通</span></div>
+      </div>
+      <div style="text-align:center;margin-top:34px;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.22em;color:rgba(255,255,255,0.8)">SCROLL ↓</div>
+    </div>
+    <div class="case-body" style="padding:90px 4.5vw 60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(30px,4vw,70px)">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.4);margin-bottom:20px"><span style="width:7px;height:7px;border-radius:50%;background:#FFF"></span><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.22em">ABOUT</span></div>
+        <p style="margin:0;font-family:'Archivo',sans-serif;font-weight:500;font-size:16px;line-height:1.55">In Altay, water is the whole story: who gets it, when, and what's left in it by the time it reaches the last field. We followed the Burqin river from source to farmland, interviewing the people who depend on it at every stop.</p>
+        <p style="margin:16px 0 0;font-family:'Archivo',sans-serif;font-weight:500;font-size:16px;line-height:1.55">Alongside the interviews we sampled water quality and built a hydrological convergence model of the watershed — then brought model and stories together in conversations with local stakeholders about sustainable use.</p>
+        <p style="margin:26px 0 0;font-family:'Archivo',sans-serif;font-weight:700;font-size:16px">Highlights:</p>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;font-family:'Archivo',sans-serif;font-weight:500;font-size:15px;line-height:1.4">
+          <div style="display:flex;gap:9px"><span>•</span><span>Field interviews along the Burqin</span></div>
+          <div style="display:flex;gap:9px"><span>•</span><span>Water sampling + convergence model</span></div>
+          <div style="display:flex;gap:9px"><span>•</span><span>Findings shared with local stakeholders</span></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="height:280px;background:rgba(255,255,255,0.14);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.22) 0 1px,transparent 1px 10px);display:flex;align-items:center;justify-content:center"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.16em;text-align:center;line-height:1.8">GALLERY — SAMPLING SITES<br>采样 照片</span></div>
+        <div style="height:280px;background:rgba(255,255,255,0.14);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.22) 0 1px,transparent 1px 10px);display:flex;align-items:center;justify-content:center"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.16em;text-align:center;line-height:1.8">GALLERY — CONVERGENCE MODEL<br>模型 图</span></div>
+      </div>
+    </div>
+    <button type="button" data-open="dr" style="display:block;width:100%;box-sizing:border-box;background:#EFE9DA;color:#17130B;padding:70px 4.5vw 90px;text-align:center;transition:filter 0.3s" style-hover="filter:brightness(1.04)">
+      <span style="display:block;font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.24em;margin-bottom:18px">NEXT CASE</span>
+      <span style="display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72,'wght' 900;font-size:clamp(44px,6vw,90px);line-height:0.95;letter-spacing:-0.01em;text-transform:uppercase">DR · 90D →</span>
+    </button>
+  </div>
+</section>
+
+<section data-view="case-dr" data-case-color="#EFE9DA" data-case-light="1" data-screen-label="Case — DR 90D" style="position:fixed;inset:0;display:none;background:#EFE9DA;color:#17130B">
+  <div data-scroll="case-dr" style="height:100%;overflow-y:auto">
+    <div style="min-height:100vh;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 4.5vw 40px">
+      <div style="text-align:center;margin-bottom:auto">
+        <div style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.2em;color:rgba(23,19,11,0.75);margin-bottom:20px">RESEARCH DRAFT · 2026</div>
+        <h1 data-case-title="1" style="margin:0;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72,'wght' 900;font-size:clamp(64px,10vw,150px);line-height:0.9;letter-spacing:-0.01em;text-transform:uppercase;color:#17130B">DR · 90D</h1>
+        <div style="margin-top:18px;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:0.26em;color:rgba(23,19,11,0.7)">手机端可转诊糖尿病视网膜病变分诊 — DRAFT 草案</div>
+      </div>
+      <div style="height:1px;background:rgba(23,19,11,0.3);margin:34px 0"></div>
+      <div class="case-top" style="display:grid;grid-template-columns:minmax(220px,300px) 1fr minmax(220px,300px);gap:clamp(24px,4vw,60px);align-items:start">
+        <p style="margin:0;font-family:'Archivo',sans-serif;font-weight:500;font-size:16px;line-height:1.55">A smartphone and a 90-dioptre lens as a screening kit — referable diabetic retinopathy triage that runs fully on-device, nothing uploaded.</p>
+        <div style="height:clamp(240px,38vh,352px);background:rgba(23,19,11,0.06);background-image:repeating-linear-gradient(135deg,rgba(23,19,11,0.12) 0 1px,transparent 1px 10px);display:flex;align-items:center;justify-content:center"><span style="font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.16em;text-align:center;line-height:1.8;color:#17130B">HERO — FUNDUS CAPTURE<br>PHONE + 90D LENS 图</span></div>
+        <div>
+          <div style="display:flex;align-items:center;gap:8px;padding-bottom:10px;border-bottom:1px solid rgba(23,19,11,0.3)"><span style="width:7px;height:7px;border-radius:50%;background:#17130B"></span><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.22em">FEATURES</span></div>
+          <div style="display:flex;justify-content:flex-end;padding:11px 0;border-bottom:1px solid rgba(23,19,11,0.3)"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#EFE9DA;background:#17130B;border-radius:999px;padding:6px 13px">ON-DEVICE AI</span></div>
+          <div style="display:flex;justify-content:flex-end;padding:11px 0;border-bottom:1px solid rgba(23,19,11,0.3)"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#EFE9DA;background:#17130B;border-radius:999px;padding:6px 13px">90D OPTICS</span></div>
+          <div style="display:flex;justify-content:flex-end;padding:11px 0;border-bottom:1px solid rgba(23,19,11,0.3)"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#EFE9DA;background:#17130B;border-radius:999px;padding:6px 13px">REFERRAL TRIAGE</span></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:40px;align-items:flex-end;justify-content:space-between;margin-top:40px;flex-wrap:wrap">
+        <p style="margin:0;max-width:760px;font-family:'Archivo',sans-serif;font-weight:750;font-size:clamp(20px,2vw,28px);line-height:1.14;letter-spacing:-0.01em">Screening that travels light — clinic-grade triage in a pocket, for places the clinic doesn't reach.</p>
+        <div style="display:flex;gap:26px;font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.12em;color:rgba(23,19,11,0.75);text-align:right"><span>FULLY ON-DEVICE<br>端侧运行</span><span>90D LENS<br>眼底成像</span><span>DRAFT<br>草案阶段</span></div>
+      </div>
+      <div style="text-align:center;margin-top:34px;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.22em;color:rgba(23,19,11,0.7)">SCROLL ↓</div>
+    </div>
+    <div class="case-body" style="padding:90px 4.5vw 60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(30px,4vw,70px)">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;padding-bottom:12px;border-bottom:1px solid rgba(23,19,11,0.3);margin-bottom:20px"><span style="width:7px;height:7px;border-radius:50%;background:#17130B"></span><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.22em">ABOUT</span></div>
+        <p style="margin:0;font-family:'Archivo',sans-serif;font-weight:500;font-size:16px;line-height:1.55">Diabetic retinopathy is treatable when caught early — but screening needs equipment that rural clinics rarely have. This draft explores whether a phone camera behind a 90-dioptre lens can be enough.</p>
+        <p style="margin:16px 0 0;font-family:'Archivo',sans-serif;font-weight:500;font-size:16px;line-height:1.55">The triage model runs fully on-device: no uploads, no connectivity requirement, an answer in the room. Role and framing are still being confirmed before publication — this page will grow as the work does.</p>
+        <p style="margin:26px 0 0;font-family:'Archivo',sans-serif;font-weight:700;font-size:16px">Status:</p>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;font-family:'Archivo',sans-serif;font-weight:500;font-size:15px;line-height:1.4">
+          <div style="display:flex;gap:9px"><span>•</span><span>Research draft — 2026</span></div>
+          <div style="display:flex;gap:9px"><span>•</span><span>Phone + 90D lens capture pipeline</span></div>
+          <div style="display:flex;gap:9px"><span>•</span><span>On-device referable/non-referable triage</span></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="height:280px;background:rgba(23,19,11,0.06);background-image:repeating-linear-gradient(135deg,rgba(23,19,11,0.12) 0 1px,transparent 1px 10px);display:flex;align-items:center;justify-content:center"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.16em;text-align:center;line-height:1.8">GALLERY — CAPTURE RIG<br>装置 照片</span></div>
+        <div style="height:280px;background:rgba(23,19,11,0.06);background-image:repeating-linear-gradient(135deg,rgba(23,19,11,0.12) 0 1px,transparent 1px 10px);display:flex;align-items:center;justify-content:center"><span style="font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:0.16em;text-align:center;line-height:1.8">GALLERY — TRIAGE UI<br>界面 截图</span></div>
+      </div>
+    </div>
+    <button type="button" data-open="ball" style="display:block;width:100%;box-sizing:border-box;background:#ED6A2F;color:#FFF;padding:70px 4.5vw 90px;text-align:center;transition:filter 0.3s" style-hover="filter:brightness(1.08)">
+      <span style="display:block;font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.24em;margin-bottom:18px">NEXT CASE</span>
+      <span style="display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 72,'wght' 900;font-size:clamp(44px,6vw,90px);line-height:0.95;letter-spacing:-0.01em;text-transform:uppercase">The Ball Collector →</span>
+    </button>
+  </div>
+</section>
+
+<!-- ================= BOTTOM CHROME ================= -->
+<div data-viewtoggle="1" style="position:fixed;left:22px;bottom:22px;z-index:110;display:flex;gap:4px;padding:5px;background:rgba(44,44,44,0.6);backdrop-filter:blur(14px);border-radius:999px;align-items:center">
+  <button type="button" data-mode-btn="grid" style="width:36px;height:36px;border-radius:50%;display:grid;place-items:center;transition:background 0.3s"><span data-mode-ico="grid" style="display:grid;grid-template-columns:5px 5px;gap:2.5px"><span style="width:5px;height:5px;border:1.4px solid currentColor;border-radius:1px"></span><span style="width:5px;height:5px;border:1.4px solid currentColor;border-radius:1px"></span><span style="width:5px;height:5px;border:1.4px solid currentColor;border-radius:1px"></span><span style="width:5px;height:5px;border:1.4px solid currentColor;border-radius:1px"></span></span></button>
+  <button type="button" data-mode-btn="list" style="width:36px;height:36px;border-radius:50%;display:grid;place-items:center;transition:background 0.3s"><span style="display:flex;flex-direction:column;gap:2.5px"><span style="width:13px;height:1.6px;background:currentColor"></span><span style="width:13px;height:1.6px;background:currentColor"></span><span style="width:13px;height:1.6px;background:currentColor"></span></span></button>
+</div>
+<div data-navbar="1" style="position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:110;display:flex;padding:5px;background:rgba(44,44,44,0.6);backdrop-filter:blur(14px);border-radius:999px;font-family:'Archivo',sans-serif;font-size:15px">
+  <span data-navind="1" style="position:absolute;top:5px;left:5px;height:calc(100% - 10px);background:#FFF;border-radius:999px;width:90px;transition:left 0.45s cubic-bezier(0.16,1,0.3,1),width 0.45s cubic-bezier(0.16,1,0.3,1)"></span>
+  <button type="button" data-nav-btn="work" style="position:relative;padding:11px 26px;border-radius:999px;color:#E0E0E0;transition:color 0.3s">Work</button>
+  <button type="button" data-nav-btn="about" style="position:relative;padding:11px 26px;border-radius:999px;color:#E0E0E0;transition:color 0.3s">About</button>
+  <button type="button" data-nav-btn="contact" style="position:relative;padding:11px 26px;border-radius:999px;color:#E0E0E0;transition:color 0.3s">Contact</button>
+</div>
+<button type="button" data-filter="1" style="position:fixed;right:22px;bottom:22px;z-index:110;padding:15px 28px;border-radius:999px;background:rgba(70,70,70,0.5);backdrop-filter:blur(14px);color:#EDEDED;font-family:'Archivo',sans-serif;font-size:15px;transition:background 0.3s" style-hover="background:rgba(90,90,90,0.6)">Filter</button>
+
+<div data-wipe="1" style="position:fixed;inset:-2px;z-index:200;background:#ED6A2F;transform:translateY(103%);pointer-events:none"></div>
+<div data-cursor="1" style="position:fixed;left:0;top:0;z-index:210;pointer-events:none;display:none;transform:translate(-50%,-50%);background:#FFF;color:#0A0A0A;border-radius:999px;padding:8px 14px;font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:0.14em">VIEW ●</div>
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
