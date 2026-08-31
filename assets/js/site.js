@@ -475,14 +475,32 @@
         wyR += wyM;
         wall.style.transform = 'translate(' + wx.toFixed(2) + 'px,' + wyR.toFixed(2) +
           'px) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
-        wall.style.perspectiveOrigin =
-          (50 - wx * 0.35 * fe) + '% ' + (42 - lag * 0.3 * fe) + '%';
+
+        /* The vanishing point has to sit at the viewer's eye — i.e. in the
+           middle of the VIEWPORT. A percentage resolves against the wall's own
+           box instead, and that box is the whole repeating tile run (3500px+
+           and it grows with the viewport), so the origin ended up ~900px below
+           the screen and slid through the wall as it scrolled. Tiles sit at
+           different translateZ, so a misplaced origin magnifies each one about
+           a different distance: rows drift apart and snap back as you scroll.
+           Anchor it in px, in the wall's coordinates, to the same focus point
+           the curve below bends around.
+
+           It is also held still rather than chasing scroll momentum and the
+           cursor as the prototype did. Moving the vanishing point re-projects
+           every tile by a different amount depending on its depth, so rows
+           visibly breathe apart and back together. The wall still tilts and
+           drifts with both (rotateX / rotateY / the translate above) — that
+           moves it as one rigid object, which is what spec M2 asks for. */
+        var vhw = window.innerHeight / wallScale;
+        var poY = vhw * 0.42 + 150 - wyR;
+        wall.style.perspectiveOrigin = (1032 - wx).toFixed(1) + 'px ' + poY.toFixed(1) + 'px';
 
         if (!tileCols) tileCols = Q('[data-wallcol]').map(function (col) {
           col.style.transformStyle = 'preserve-3d';
           return Array.prototype.slice.call(col.children);
         });
-        var k2 = PROPS.wallCurve, vh = window.innerHeight / wallScale;
+        var k2 = PROPS.wallCurve, vh = vhw;
         tileCols.forEach(function (kids) {
           for (var i = 0; i < kids.length; i++) {
             var cy = -150 + wyR + (i + 0.5) * TILE;
