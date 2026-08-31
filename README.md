@@ -84,6 +84,13 @@ inline style. The design spec (M3) intends most tiles to become muted looping
 video — a `<video class="slot-img" muted loop playsinline autoplay poster="…">`
 drops into the same place when clips exist.
 
+## Editing
+
+`index.html` links the stylesheet and script with a `?v=` query
+(`assets/js/site.js?v=2`). **Bump that number when you change `site.css` or
+`site.js`**, otherwise returning visitors keep the cached copy for up to ten
+minutes after a deploy. Images are content-hashed by name, so they don't need it.
+
 ## Notes
 
 - The header's live Beijing / Boston clocks tick from the visitor's browser.

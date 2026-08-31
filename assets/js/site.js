@@ -80,9 +80,40 @@
     });
   }
 
+  var wallScale = 1;
   function fitWall() {
-    var s = Math.max(0.42, Math.min(1, window.innerWidth / 1180));
-    document.documentElement.style.setProperty('--wall-scale', s.toFixed(3));
+    wallScale = Math.max(0.42, Math.min(1, window.innerWidth / 1180));
+    document.documentElement.style.setProperty('--wall-scale', wallScale.toFixed(3));
+  }
+
+  /* The wall fakes infinite scroll by repeating its tiles: the rendered offset
+     is always wrapped into [-CYCLE, 0), so the run has to be long enough to
+     cover the viewport from one cycle above the top down to the bottom. On a
+     scaled-down wall the viewport is taller in wall space (vh / scale), and on
+     a tall window it is taller still — so the copy count is computed, not fixed
+     at three, or the top of the screen scrolls into empty space. */
+  function ensureWallCoverage() {
+    fitWall();
+    var needed = Math.max(3, Math.ceil((window.innerHeight / wallScale + CYCLE) / CYCLE) + 1);
+    var grew = false;
+    Q('[data-wallcol]').forEach(function (col) {
+      if (!col._originals) {
+        col._originals = Array.prototype.slice.call(col.children);
+        col._copies = 1;
+      }
+      while (col._copies < needed) {
+        col._originals.forEach(function (k) {
+          var clone = k.cloneNode(true);
+          clone.setAttribute('aria-hidden', 'true');
+          Array.prototype.slice.call(clone.querySelectorAll('button, [tabindex]'))
+            .forEach(function (b) { b.setAttribute('tabindex', '-1'); });
+          col.appendChild(clone);
+        });
+        col._copies++;
+        grew = true;
+      }
+    });
+    if (grew) tileCols = null;   /* drop the cached child lists */
   }
 
   /* ---------- view switching --------------------------------- */
@@ -311,23 +342,8 @@
   function init() {
     Q('[style-hover]').forEach(bindHover);
 
-    /* infinite scroll: tile every wall column 3× */
-    Q('[data-wallcol]').forEach(function (col) {
-      if (col.hasAttribute('data-cloned')) return;
-      col.setAttribute('data-cloned', '1');
-      var kids = Array.prototype.slice.call(col.children);
-      for (var r = 0; r < 2; r++) {
-        kids.forEach(function (k) {
-          var clone = k.cloneNode(true);
-          clone.setAttribute('aria-hidden', 'true');
-          Array.prototype.slice.call(clone.querySelectorAll('button, [tabindex]'))
-            .forEach(function (b) { b.setAttribute('tabindex', '-1'); });
-          col.appendChild(clone);
-        });
-      }
-    });
+    ensureWallCoverage();
     applyCurve();
-    fitWall();
 
     tick();
     setInterval(tick, 1000);
@@ -407,7 +423,7 @@
       if (e.key === 'Escape' && view.indexOf('case-') === 0) goTo('work');
     });
 
-    window.addEventListener('resize', function () { fitWall(); placeNavInd(false); });
+    window.addEventListener('resize', function () { ensureWallCoverage(); placeNavInd(false); });
 
     /* rAF loop (M1, M2) */
     (function loop() {
@@ -416,8 +432,6 @@
       var wall = q('[data-wall]');
       if (wall && view === 'grid') {
         if (flick) { tyScroll += flick; flick *= 0.93; if (Math.abs(flick) < 0.2) flick = 0; }
-        if (tyScroll > 0) { tyScroll -= CYCLE; wy -= CYCLE; }
-        else if (tyScroll < -CYCLE) { tyScroll += CYCLE; wy += CYCLE; }
         var tx = still ? 0 : txm;
         var ty = tyScroll + (still ? 0 : tym);
         wx += (tx - wx) * 0.06; wy += (ty - wy) * 0.06;
@@ -426,7 +440,12 @@
         var lag = Math.max(-70, Math.min(70, wy - tyScroll));
         var rx = still ? 0 : lag * -0.14 * fe;
         var ry = still ? 0 : wx * 0.18 * fe;
-        wall.style.transform = 'translate(' + wx.toFixed(2) + 'px,' + wy.toFixed(2) +
+        /* The tile run repeats every CYCLE px, so drawing at wy or at
+           wy mod CYCLE is identical — but the wrapped offset never lifts the
+           run off the top of the screen. Scroll position stays in wy so the
+           lerp and the momentum tilt above still see the real distance. */
+        var wyR = wy % CYCLE; if (wyR > 0) wyR -= CYCLE;
+        wall.style.transform = 'translate(' + wx.toFixed(2) + 'px,' + wyR.toFixed(2) +
           'px) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
         wall.style.perspectiveOrigin =
           (50 - wx * 0.35 * fe) + '% ' + (42 - lag * 0.3 * fe) + '%';
@@ -435,10 +454,10 @@
           col.style.transformStyle = 'preserve-3d';
           return Array.prototype.slice.call(col.children);
         });
-        var k2 = PROPS.wallCurve, vh = window.innerHeight;
+        var k2 = PROPS.wallCurve, vh = window.innerHeight / wallScale;
         tileCols.forEach(function (kids) {
           for (var i = 0; i < kids.length; i++) {
-            var cy = -150 + wy + (i + 0.5) * TILE;
+            var cy = -150 + wyR + (i + 0.5) * TILE;
             if (k2 <= 0) { kids[i].style.transform = 'none'; continue; }
             /* true cylindrical arc: tiles chained tangent to a circle of radius R,
                so projected footprints stay contiguous (no text overlap at seams) */
