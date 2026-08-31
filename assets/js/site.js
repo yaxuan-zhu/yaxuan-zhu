@@ -97,9 +97,39 @@
   }
 
   var wallScale = 1;
+  var WALL_W = 2050;   /* 6 columns x 344px, less the width the 3D rotation eats */
   function fitWall() {
-    wallScale = Math.max(0.42, Math.min(1, window.innerWidth / 1180));
+    /* Shrink to fit narrow screens, but also grow past 1 on wide ones: the wall
+       is a fixed 2064px of markup, so above ~2100px it stopped short of the
+       edges and left black bars down both sides. */
+    wallScale = Math.max(0.42, Math.min(1, window.innerWidth / 1180), window.innerWidth / WALL_W);
     document.documentElement.style.setProperty('--wall-scale', wallScale.toFixed(3));
+  }
+
+  /* The About filmstrip scrolls by translateX(-50%), so each half has to be at
+     least a screen wide or the tail of the loop shows empty space. Repeat the
+     unit until it is, keeping the two halves identical, and stretch the
+     duration to match so the strip keeps its pace. */
+  var STRIP_TILE = 303;   /* 300px tile + 3px gap */
+  function ensureStripCoverage() {
+    var strip = q('[data-strip]');
+    if (!strip) return;
+    if (!strip._unit) {
+      var kids = Array.prototype.slice.call(strip.children);
+      strip._unit = kids.slice(0, kids.length / 2);
+      strip._copies = 2;
+    }
+    var unitW = strip._unit.length * STRIP_TILE;
+    var need = Math.max(1, Math.ceil(window.innerWidth / unitW)) * 2;
+    while (strip._copies < need) {
+      strip._unit.forEach(function (el) {
+        var c = el.cloneNode(true);
+        c.setAttribute('aria-hidden', 'true');
+        strip.appendChild(c);
+      });
+      strip._copies++;
+    }
+    strip.style.animationDuration = (60 * strip._copies / 2) + 's';
   }
 
   /* The wall fakes infinite scroll by repeating its tiles: the rendered offset
@@ -111,6 +141,7 @@
   var bindNewHovers = false;
   function ensureWallCoverage() {
     fitWall();
+    ensureStripCoverage();
     var needed = Math.max(3, Math.ceil((window.innerHeight / wallScale + CYCLE) / CYCLE) + 1);
     var grew = false;
     Q('[data-wallcol]').forEach(function (col) {
@@ -152,8 +183,19 @@
     } catch (e) { /* file:// */ }
 
     var hdr = q('[data-header]');
+    var sec = q('[data-view="' + target + '"]');
     var light = !!q('[data-view="' + target + '"][data-case-light]');
     if (hdr) hdr.style.filter = light ? 'invert(1)' : 'none';
+
+    /* tint the header scrim to whatever this view's background is, so text
+       scrolling underneath fades out instead of colliding with the header */
+    var scrim = q('[data-topscrim]');
+    if (scrim) {
+      var bg = (sec && sec.getAttribute('data-case-color')) || '#0A0A0A';
+      /* opaque over the header itself — it is the page's own colour, so it
+         is invisible except where content passes beneath it */
+      scrim.style.background = 'linear-gradient(' + bg + ' 0%, ' + bg + ' 46%, ' + bg + '00 100%)';
+    }
 
     var isWork = target === 'grid' || target === 'list';
     var vt = q('[data-viewtoggle]'), fb = q('[data-filter]');

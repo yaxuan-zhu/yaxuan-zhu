@@ -56,6 +56,7 @@ button {
 /* --- Phone -------------------------------------------------- */
 @media (max-width: 760px) {
   [data-header] { padding: 14px 16px 24px !important; gap: 12px !important; }
+  [data-topscrim] { height: 96px !important; }   /* shorter header on phones */
   [data-header] [data-nav-btn="contact"] { padding: 11px 18px !important; font-size: 14px !important; }
   [data-sound] { display: none !important; }
 
