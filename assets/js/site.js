@@ -30,7 +30,7 @@
   var tileCols = null;
 
   /* wall lerp state */
-  var wx = 0, wy = 0, txm = 0, tym = 0, tyScroll = 0, flick = 0;
+  var wx = 0, wy = 0, wyM = 0, txm = 0, tym = 0, tyScroll = 0, flick = 0;
   var scrollTargets = new Map();
 
   /* ---------- hover shim -------------------------------------
@@ -38,10 +38,26 @@
      Apply them per-property so JS-driven inline styles (filter
      opacity, active states) survive a hover in and out. */
   function bindHover(el) {
+    if (el._hoverBound) return;
+    el._hoverBound = true;
     var decls = el.getAttribute('style-hover').split(';').filter(Boolean).map(function (d) {
       var i = d.indexOf(':');
       return [d.slice(0, i).trim(), d.slice(i + 1).trim()];
     });
+    /* Wall tiles have their transform rewritten every frame by the cylinder
+       maths, so an inline hover transform here would be stomped a frame later
+       and make the tile twitch under the cursor. Hand the scale to the loop
+       instead and let it compose the two. */
+    if (el.closest('[data-wallcol]')) {
+      decls = decls.filter(function (d) {
+        if (d[0] !== 'transform') return true;
+        var m = /scale\(\s*([\d.]+)\s*\)/.exec(d[1]);
+        el._hoverScale = m ? parseFloat(m[1]) : 1;
+        return false;
+      });
+      el.addEventListener('mouseenter', function () { el._hovered = true; });
+      el.addEventListener('mouseleave', function () { el._hovered = false; });
+    }
     var prev = {};
     el.addEventListener('mouseenter', function () {
       decls.forEach(function (d) {
@@ -92,6 +108,7 @@
      scaled-down wall the viewport is taller in wall space (vh / scale), and on
      a tall window it is taller still — so the copy count is computed, not fixed
      at three, or the top of the screen scrolls into empty space. */
+  var bindNewHovers = false;
   function ensureWallCoverage() {
     fitWall();
     var needed = Math.max(3, Math.ceil((window.innerHeight / wallScale + CYCLE) / CYCLE) + 1);
@@ -111,9 +128,16 @@
         });
         col._copies++;
         grew = true;
+        bindNewHovers = true;
       }
     });
     if (grew) tileCols = null;   /* drop the cached child lists */
+    if (bindNewHovers) {
+      bindNewHovers = false;
+      /* cloneNode doesn't copy listeners — without this, hover works on the
+         original tiles and does nothing on the copies */
+      Q('[style-hover]').forEach(bindHover);
+    }
   }
 
   /* ---------- view switching --------------------------------- */
@@ -340,9 +364,8 @@
 
   /* ---------- boot -------------------------------------------- */
   function init() {
-    Q('[style-hover]').forEach(bindHover);
-
     ensureWallCoverage();
+    Q('[style-hover]').forEach(bindHover);
     applyCurve();
 
     tick();
@@ -433,8 +456,12 @@
       if (wall && view === 'grid') {
         if (flick) { tyScroll += flick; flick *= 0.93; if (Math.abs(flick) < 0.2) flick = 0; }
         var tx = still ? 0 : txm;
-        var ty = tyScroll + (still ? 0 : tym);
-        wx += (tx - wx) * 0.06; wy += (ty - wy) * 0.06;
+        wx += (tx - wx) * 0.06;
+        /* Scroll and cursor drift are lerped apart. Folding the cursor into the
+           scroll position let a few px of mouse movement tip it across the
+           wrap boundary below, re-drawing the whole wall as the cursor moved. */
+        wy += (tyScroll - wy) * 0.06;
+        wyM += ((still ? 0 : tym) - wyM) * 0.06;
         var fe = PROPS.fishEye;
         /* momentum tilt, bounded so flicks can't tumble the wall */
         var lag = Math.max(-70, Math.min(70, wy - tyScroll));
@@ -445,6 +472,7 @@
            run off the top of the screen. Scroll position stays in wy so the
            lerp and the momentum tilt above still see the real distance. */
         var wyR = wy % CYCLE; if (wyR > 0) wyR -= CYCLE;
+        wyR += wyM;
         wall.style.transform = 'translate(' + wx.toFixed(2) + 'px,' + wyR.toFixed(2) +
           'px) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
         wall.style.perspectiveOrigin =
@@ -458,15 +486,21 @@
         tileCols.forEach(function (kids) {
           for (var i = 0; i < kids.length; i++) {
             var cy = -150 + wyR + (i + 0.5) * TILE;
-            if (k2 <= 0) { kids[i].style.transform = 'none'; continue; }
+            if (k2 <= 0) {
+              var flatHov = kids[i]._hovered ? (kids[i]._hoverScale || 1) : 1;
+              kids[i].style.transform = flatHov !== 1 ? 'scale(' + flatHov + ')' : 'none';
+              continue;
+            }
             /* true cylindrical arc: tiles chained tangent to a circle of radius R,
                so projected footprints stay contiguous (no text overlap at seams) */
             var R = 24000 / k2;
             var yFlat = Math.max(-0.85 * vh, Math.min(0.85 * vh, cy - vh * 0.42));
             var phi = yFlat / R;
+            var hov = kids[i]._hovered ? (kids[i]._hoverScale || 1) : 1;
             kids[i].style.transform =
               'translateY(' + (R * Math.sin(phi) - yFlat).toFixed(1) + 'px) translateZ(' +
-              (R * (1 - Math.cos(phi))).toFixed(1) + 'px) rotateX(' + (-phi * 57.29578).toFixed(2) + 'deg)';
+              (R * (1 - Math.cos(phi))).toFixed(1) + 'px) rotateX(' + (-phi * 57.29578).toFixed(2) + 'deg)' +
+              (hov !== 1 ? ' scale(' + hov + ')' : '');
           }
         });
       }

@@ -39,12 +39,20 @@ workflow republishes on every push to `main`.
 (If you'd rather not use Actions, **Source → Deploy from a branch → `main` / `root`**
 works too — `.nojekyll` is already in place for it.)
 
-Live URL: **https://yaxuan-zhu.github.io/yaxuan-zhu/** — that's the address the
-`canonical` and `og:` tags in `index.html` point at.
+Live URL: **https://yaxuanzhu.com/** — the `canonical` and `og:` tags in
+`index.html` point there.
 
-> Renaming the repo to **`yaxuan-zhu.github.io`** would serve the site from the
-> shorter `https://yaxuan-zhu.github.io/` instead. If you do that, update the
-> three URLs in the `<head>` of `index.html` to match.
+### Custom domain
+
+`CNAME` (containing `yaxuanzhu.com`) must stay in the repo root. The Actions
+workflow deploys the whole repo as the site, so a deploy without that file can
+drop the custom domain and stall the TLS certificate.
+
+DNS is already right — the apex points at GitHub's four Pages addresses
+(185.199.108–111.153). Once the certificate is issued, tick **Settings → Pages →
+Enforce HTTPS**; until then the site answers on `http://` only and browsers show
+"Not secure". Issuance usually takes minutes but can take up to an hour after the
+domain is (re)saved in Settings.
 
 ## Photography
 
