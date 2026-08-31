@@ -102,3 +102,21 @@ button {
   [data-header] { padding: 12px 12px 20px !important; }
   [data-header] [data-nav-btn="contact"] { padding: 10px 16px !important; }
 }
+
+/* --- Wall: give every tile its own compositing layer ---------
+   Chromium records and rasterizes only a limited region of a composited
+   layer. [data-wall] is a single 2064 x 3500-6000px layer that is MOVED BY
+   TRANSFORM every frame (not scrolled), and Chromium does not re-record it
+   fast enough: the regions it had not recorded composite as empty, so bands
+   of the wall come up blank, or a frame stale next to freshly drawn
+   neighbours — which reads as tiles shifting. Verified: with the wall's
+   contents completely frozen (no per-tile transforms, no perspective-origin
+   churn) and only the wall's own transform animating, the bands still
+   appeared; shrinking the same wall from 3504px to 1521px made them stop.
+   Firefox rasterizes through WebRender and never showed it.
+
+   Each tile is only 344 x 292, so a per-tile layer is always small enough to
+   be recorded in full — there is no unrecorded region left to come up blank,
+   at any wall size. The tiles already carry 3D transforms; this only asks
+   Chromium to promote them instead of flattening them into the parent. */
+[data-wallcol] > * { will-change: transform; }
