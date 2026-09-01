@@ -103,20 +103,24 @@ button {
   [data-header] [data-nav-btn="contact"] { padding: 10px 16px !important; }
 }
 
-/* --- Wall: give every tile its own compositing layer ---------
-   Chromium records and rasterizes only a limited region of a composited
-   layer. [data-wall] is a single 2064 x 3500-6000px layer that is MOVED BY
-   TRANSFORM every frame (not scrolled), and Chromium does not re-record it
-   fast enough: the regions it had not recorded composite as empty, so bands
-   of the wall come up blank, or a frame stale next to freshly drawn
-   neighbours — which reads as tiles shifting. Verified: with the wall's
-   contents completely frozen (no per-tile transforms, no perspective-origin
-   churn) and only the wall's own transform animating, the bands still
-   appeared; shrinking the same wall from 3504px to 1521px made them stop.
-   Firefox rasterizes through WebRender and never showed it.
+/* --- Wall: every tile is its own small compositing layer ------
+   Chromium could not keep the old single huge wall surface (wall perspective
+   + column preserve-3d fused everything into one ~2070x3500-6000px layer,
+   moved by transform every frame) recorded ahead of the scroll: unrecorded
+   bands composited as blank. The rAF loop now writes each tile's ENTIRE
+   transform chain onto the tile itself (see site.js), so the wall and the
+   columns are static, unpainted layout containers and each 344x292 tile is
+   an independent layer that is always recorded in full.
 
-   Each tile is only 344 x 292, so a per-tile layer is always small enough to
-   be recorded in full — there is no unrecorded region left to come up blank,
-   at any wall size. The tiles already carry 3D transforms; this only asks
-   Chromium to promote them instead of flattening them into the parent. */
-[data-wallcol] > * { will-change: transform; }
+   That also means the tiles carry the paint the columns used to: the column
+   background and the 1px column rule now live here, so they move and rotate
+   with the tiles they belong to. transform-origin 0 0 because the loop's
+   transform chain does its own origin bookkeeping. */
+[data-wallcol] > * {
+  will-change: transform;
+  transform-origin: 0 0;
+  background: #0C0C0C;
+  border-right: 1px solid #1F1F1F;
+}
+/* the wall's last column never had a right-hand rule */
+[data-wall] > [data-wallcol]:last-child > * { border-right: none; }
