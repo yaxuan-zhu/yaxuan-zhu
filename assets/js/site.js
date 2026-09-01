@@ -28,7 +28,6 @@
   var soundOn = false;
   var lastHot = null;
   var tileCols = null;
-  var wallGeom = null;
 
   /* wall lerp state */
   var wx = 0, wy = 0, wyM = 0, txm = 0, tym = 0, tyScroll = 0, flick = 0;
@@ -56,6 +55,13 @@
         el._hoverScale = m ? parseFloat(m[1]) : 1;
         return false;
       });
+      /* The loop eases the hover scale itself. A CSS transition on transform
+         would also animate the tile's offscreen wrap jump (a whole run
+         length) as a visible slide across the screen. transition-property
+         overrides the shorthand's property list; opacity keeps its fade. */
+      if (el.style.transition.indexOf('transform') > -1) {
+        el.style.transitionProperty = 'opacity';
+      }
       el.addEventListener('mouseenter', function () { el._hovered = true; });
       el.addEventListener('mouseleave', function () { el._hovered = false; });
     }
@@ -513,12 +519,6 @@
         var lag = Math.max(-70, Math.min(70, wy - tyScroll));
         var rx = still ? 0 : lag * -0.14 * fe;
         var ry = still ? 0 : wx * 0.18 * fe;
-        /* The tile run repeats every CYCLE px, so drawing at wy or at
-           wy mod CYCLE is identical — but the wrapped offset never lifts the
-           run off the top of the screen. Scroll position stays in wy so the
-           lerp and the momentum tilt above still see the real distance. */
-        var wyR = wy % CYCLE; if (wyR > 0) wyR -= CYCLE;
-        wyR += wyM;
 
         /* Chromium clipped the wall while scrolling: the wall's perspective +
            the columns' preserve-3d fused wall, columns and every tile into ONE
@@ -530,50 +530,59 @@
            under an identical scripted scroll. Firefox (WebRender) never
            showed it.
 
-           So nothing big moves any more: the wall and columns are static,
-           unpainted containers, and every frame writes each 344x292 tile ONE
-           transform that composes the whole old chain — wall translate+tilt,
-           the shared vanishing point (a per-tile-conjugated perspective() —
-           same projection, no shared 3D context), the column's arc, the tile's
-           cylinder arc, and hover. Identical projection maths; each tile is a
-           small independent compositor layer that can always be recorded in
-           full.
+           So nothing big moves: the wall and columns are static, unpainted
+           containers, and every frame writes each 344x292 tile ONE transform
+           composing the whole chain — position, viewer projection, column
+           arc, cylinder arc, hover. Each tile is a small independent
+           compositor layer that can always be recorded in full.
 
-           The vanishing point still sits at the viewer's eye, fixed in the
-           VIEWPORT (px, compensated for scroll/drift), and is still held
-           still rather than chasing momentum — moving it re-projects every
-           tile by a different amount per depth and rows visibly breathe. The
-           wall still tilts and drifts as one rigid object (spec M2): those
-           terms are simply part of every tile's chain now. */
+           The scene is anchored at the VIEWER, spec M2's "inside of the
+           ball": F is the focus point (viewport centre, 42% down — the same
+           point the old code steered perspective-origin to). The projection
+           eye sits at F, and the momentum tilt rx/ry pivots about F too —
+           the camera nods about its own eye.
+
+           Each tile also wraps around the cloned run ON ITS OWN, far
+           offscreen, instead of the whole wall teleporting by one cycle at a
+           shared boundary. The old global wrap swapped every visible element
+           for its clone in the same frame; with per-tile layers that moment
+           forced a wall-wide texture swap — a visible whole-wall "refresh"
+           blink — while the transform transition slid the case tiles around
+           and the tilt pivot (which rode the wrapped offset) jolted. A
+           tile's offset t runs over the whole run [-CYCLE, L-CYCLE) modulo
+           L, so it only ever jumps while more than a cycle outside the
+           viewport, always by a multiple of CYCLE — where the column content
+           repeats — so the visible picture is continuous through every
+           boundary. Scroll position stays unwrapped in wy so the lerp and
+           the momentum tilt see the real distance. */
+        var wyTot = wy + wyM;
         if (!tileCols) {
-          wallGeom = { cx: wall.offsetWidth / 2, cy: wall.offsetHeight / 2 };
           tileCols = Q('[data-wallcol]').map(function (col) {
             return {
               kids: Array.prototype.slice.call(col.children),
               left: col.offsetLeft,
               ox: col.offsetWidth / 2,
               mid: col.offsetHeight / 2,
+              run: col.children.length * TILE,
               curve: col._curve
             };
           });
         }
         var vhw = window.innerHeight / wallScale;
-        var pox = 1032 - wx, poy = vhw * 0.42 + 150 - wyR;
-        /* shared middle of every chain: wall tilt about the wall's centre,
-           then the perspective conjugated about the focus point */
-        var shared = 'rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) +
-          'deg) translate3d(' + (pox - wallGeom.cx).toFixed(2) + 'px,' +
-          (poy - wallGeom.cy).toFixed(2) + 'px,0) perspective(2200px) ';
+        var fx = 1032, fy = vhw * 0.42 + 150;
+        var tilt = 'rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) +
+          'deg) perspective(2200px) ';
         var k2 = PROPS.wallCurve, vh = vhw;
         tileCols.forEach(function (c) {
-          var colStr = 'translate3d(' + (c.left + c.ox - pox).toFixed(2) + 'px,' +
-            (c.mid - poy).toFixed(2) + 'px,0) rotateY(' + c.curve.ang.toFixed(2) +
-            'deg) translateY(' + c.curve.ty.toFixed(1) + 'px) translateZ(' +
-            c.curve.tz.toFixed(1) + 'px) ';
-          var kids = c.kids;
+          var colX = (c.left + c.ox - fx + wx).toFixed(2);
+          var colRot = 'rotateY(' + c.curve.ang.toFixed(2) + 'deg) translateY(' +
+            c.curve.ty.toFixed(1) + 'px) translateZ(' + c.curve.tz.toFixed(1) + 'px) ';
+          var kids = c.kids, L = c.run;
           for (var i = 0; i < kids.length; i++) {
             var top = i * TILE;
-            var cy = -150 + wyR + (i + 0.5) * TILE;
+            var t = (top + wyTot) % L; if (t < 0) t += L;
+            if (t >= L - CYCLE) t -= L;
+            var cy = t - 4;   /* tile centre: -150 + t + 146 */
             var a = 0, b = 0, rot = 0;
             if (k2 > 0) {
               /* true cylindrical arc: tiles chained tangent to a circle of radius R,
@@ -585,13 +594,19 @@
               b = R * (1 - Math.cos(phi));
               rot = -phi * 57.29578;
             }
-            var hov = kids[i]._hovered ? (kids[i]._hoverScale || 1) : 1;
+            var tgt = kids[i]._hovered ? (kids[i]._hoverScale || 1) : 1;
+            var hs = kids[i]._hs || 1;
+            hs += (tgt - hs) * 0.22;
+            if (Math.abs(hs - tgt) < 0.0005) hs = tgt;
+            kids[i]._hs = hs;
             kids[i].style.transform =
-              'translate3d(' + (wallGeom.cx + wx - c.left).toFixed(2) + 'px,' +
-              (wallGeom.cy + wyR - top).toFixed(2) + 'px,0) ' + shared + colStr +
+              'translate3d(' + (fx - c.left).toFixed(2) + 'px,' + (fy - top).toFixed(2) + 'px,0) ' +
+              tilt +
+              'translate3d(' + colX + 'px,' + (c.mid - fy + t - top).toFixed(2) + 'px,0) ' +
+              colRot +
               'translate3d(' + (172 - c.ox).toFixed(1) + 'px,' + (top + 146 - c.mid).toFixed(2) + 'px,0) translateY(' +
               a.toFixed(1) + 'px) translateZ(' + b.toFixed(1) + 'px) rotateX(' +
-              rot.toFixed(2) + 'deg) scale(' + hov + ') translate3d(-172px,-146px,0)';
+              rot.toFixed(2) + 'deg) scale(' + hs.toFixed(4) + ') translate3d(-172px,-146px,0)';
           }
         });
       }
